@@ -14,13 +14,19 @@ function modificarPublicacion($publicacion) {
     $respuesta = $connection->query($sql);
     return $respuesta;
 }
-function eliminarPublicacion($publicacion) {
+function eliminarPublicacion($id) {
     $connection = connection();
-    $sql = `DELETE * FROM publicacion WHERE id= $publicacion->id`;
+    $sql = `DELETE * FROM publicacion WHERE id= $id`;
     $respuesta = $connection->query($sql);
     return $respuesta;
 }
-function obtenerPublicacion($publicacion) {
+function obtenerPublicacionesRol($rol) {
+    $connection = connection();
+    $sql = `SELECT * FROM publicacion WHERE rol = '$rol'`;
+    $respuesta = $connection->query($sql);
+    return $respuesta;
+}
+function obtenerPublicacionesAdmin() {
     $connection = connection();
     $sql = `SELECT * FROM publicacion`;
     $respuesta = $connection->query($sql);

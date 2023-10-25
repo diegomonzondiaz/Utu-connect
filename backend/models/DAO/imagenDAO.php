@@ -2,6 +2,9 @@
 include 'database/database.php';
 class imagenDAO {
 
+
+
+}
 function agregarImagen($imagen) {
     $connection = connection();
     $imagenName = $imagen['name'];
@@ -34,7 +37,4 @@ function obtenerImagen($publicacion) {
     $respuesta = $connection->query($sql);
     return $respuesta;
 }
-
-}
-
 ?>

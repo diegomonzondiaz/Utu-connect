@@ -2,11 +2,13 @@
 include 'database/database.php';
 class archivoDAO {
 
+
+}
 function agregarArchivo($archivo) {
     $connection = connection();
     $archivoName = $archivo['name'];
     $rutaTemporal =$archivo['tmp_name'];
-    $extension = pathinfo($imagenName, PATHINFO_EXTENSION);
+    $extension = pathinfo($archivoName, PATHINFO_EXTENSION);
     $sql = `INSERT INTO archivo ('nombre') VALUES($archivoName)`;
     $respuesta = $connection->query($sql);
     $id = $connection->insert_id;
@@ -33,8 +35,6 @@ function obtenerArchivo($publicacion) {
     $sql = `SELECT * FROM publicacion`;
     $respuesta = $connection->query($sql);
     return $respuesta;
-}
-
 }
 
 ?>
