@@ -1,6 +1,8 @@
 <?php 
 include '../models/publicacion.php';
-include '../models/publicacionDAO.php';
+include '../models/DAO/publicacionDAO.php';
+include '../models/DAO/imagenDAO.php';
+include '../models/DAO/archivoDAO.php';
 $tipoConsulta = $_GET['consulta'];
 
 switch ($tipoConsulta) {
@@ -13,9 +15,12 @@ switch ($tipoConsulta) {
     case "eliminar":
         eliminarPublicacion();
     break;
-    case "obtener":
-        obtenerPublicacion();
+    case "obtenerRol":
+        obtenerPublicacionesRol();
     break;
+    case "obtenerAdmin":
+        obtenerPublicacionesAdmin();
+        break;
 }
 
 function agregarPublicacion(){
@@ -31,41 +36,34 @@ function agregarPublicacion(){
     if($contenido_archivo){
         $archivo = new archivoDAO.agregarArchivo($contenido_archivo);
     }
-    $publicacion = new publicacion($titulo, $categoria, $tipo, $archivo, $imagen, $contenido_texto);
+    $publicacion = new publicacion(null, $titulo, $categoria, $tipo, $archivo, $imagen, $contenido_texto);
     $resultado = new publicacionDAO.agregarPublicacion($publicacion);
     return $resultado;
 }
 function modificarPublicacion(){
+    $id = $_POST['id'];
     $titulo = $_POST['titulo'];
     $categoria = $_POST['categoria'];
     $tipo = $_POST['tipo'];
     $contenido_img = $_POST['contenido_img'];
     $contenido_texto = $_POST['contenido_texto'];
     $contenido_archivo = $_POST['contenido_archivo'];
-    $publicacion = new publicacion($titulo, $categoria, $tipo, $contenido_archivo, $contenido_img, $contenido_texto);
+    $publicacion = new publicacion($id, $titulo, $categoria, $tipo, $contenido_archivo, $contenido_img, $contenido_texto);
     $resultado = new publicacionDAO.modificarPublicacion($publicacion);
     return $resultado;
 }
 function eliminarPublicacion(){
-    $titulo = $_POST['titulo'];
-    $categoria = $_POST['categoria'];
-    $tipo = $_POST['tipo'];
-    $contenido_img = $_POST['contenido_img'];
-    $contenido_texto = $_POST['contenido_texto'];
-    $contenido_archivo = $_POST['contenido_archivo'];
-    $resultado = new publicacionDAO.eliminarPublicacion($publicacion);
+    $id = $_POST['id'];
+    $resultado = new publicacionDAO.eliminarPublicacion($id);
     return $resultado;
 }
-function obtenerPublicacion(){
-    $titulo = $_POST['titulo'];
-    $categoria = $_POST['categoria'];
-    $tipo = $_POST['tipo'];
-    $contenido_img = $_POST['contenido_img'];
-    $contenido_texto = $_POST['contenido_texto'];
-    $contenido_archivo = $_POST['contenido_archivo'];
-    $publicacion = new publicacion($titulo, $categoria, $tipo, $contenido_archivo, $contenido_img, $contenido_texto);
-    $resultado = new publicacionDAO.obtenerPublicacion($publicacion);
-    return $resultado;
+function obtenerPublicacionesAdmin(){
+    $publicaciones = new publicacionDAO.obtenerPublicacionesAdmin();
+    echo $publicaciones;
 }
-
+function obtenerPublicacionesRol(){
+    $rol = $_POST['rol'];
+    $publicaciones = new publicacionDAO.obtenerPublicacionesRol($rol);
+    echo $publicaciones;
+}
 ?>
