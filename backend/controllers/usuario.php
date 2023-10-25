@@ -1,6 +1,11 @@
 <?php 
-include "../models/usuario.php";
-include "../models/DAO/usuarioDAO.php";
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require_once __DIR__ . "/../models/usuario.php";
+require_once __DIR__ . "/../models/DAO/usuarioDAO.php";
 
     $tipoConsulta = $_GET['consulta'];
     switch ($tipoConsulta) {
@@ -11,7 +16,7 @@ include "../models/DAO/usuarioDAO.php";
             modificarUsuario();
         break;
         case "eliminar":
-            eliminarUsuario();
+            // eliminarUsuario();
         break;
         case "obtener":
             obtenerUsuario();
@@ -23,31 +28,38 @@ include "../models/DAO/usuarioDAO.php";
         $nombre = $_POST['nombre'];
         $password = $_POST['password'];
         $ci = $_POST['ci'];
-        $usuario = new usuario($ci, $nombre, $password);
-        $resultado = new usuarioDAO.agregarUsuario($usuario);   
-        return $resultado;
+        $tipo = $_POST['tipo'];
+        $usuario = new usuario($ci, $nombre, $password, $tipo);
+        $resultado = (new usuarioDAO())->agregarUsuario($usuario);   
+       echo json_encode($resultado) ;
     }
+
     function modificarUsuario(){
         $nombre = $_POST['nombre'];
         $password = $_POST['password'];
         $ci = $_POST['ci'];
-        $usuario = new usuario($ci, $nombre, $password);
+        $tipo = $_POST['tipo'];
+        $usuario = new usuario($ci, $nombre, $password, $tipo);
         $resultado = new usuarioDAO.modificarUsuario($usuario);
         return $resultado;
     }
+
     function eliminarUsuarios(){
         $nombre = $_POST['nombre'];
         $password = $_POST['password'];
         $ci = $_POST['ci'];
-        $usuario = new usuario($ci, $nombre, $password);
-        $resultado = new usuarioDAO.eliminarUsuario($usuario);
-        return $resultado;
+        $tipo = $_POST['tipo'];
+        $usuario = new usuario($ci, $nombre, $password, $tipo);
+       // $resultado = new UsuarioDAO.eliminarUsuario($usuario);
+       // return $resultado;
     }
+
     function obtenerUsuario(){
         $nombre = $_POST['nombre'];
         $password = $_POST['password'];
         $ci = $_POST['ci'];
-        $usuario = new usuario($ci, $nombre, $password);
+        $tipo = $_POST['tipo'];
+        $usuario = new usuario($ci, $nombre, $password, $tipo);
         $resultado = new usuarioDAO.obtenerUsuario($usuario);
         return $resultado;
     }

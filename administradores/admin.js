@@ -6,17 +6,29 @@ window.onload = function() {
 }
 
 var obtenerUsuario = async ()=>{
-    let url = 'http://localhost/UTUConnect/backend/index.php?objetivo=sesion&request=obtenerSesion';
+    let url = window.location.origin+'/UTUConnect/backend/index.php?objetivo=sesion&request=obtenerSesion';
     let respuesta = await fetch(url);
     let respuestaDatos = await respuesta.json();
-    if(respuestaDatos == null || respuestaDatos.tipo != 'admin') {
+    let bienvenida = document.querySelector('#bienvenida');
+    bienvenida.innerText = `Bienvenido/a ${respuestaDatos.data.name}`; 
+    if (respuestaDatos.success){
+        if (respuestaDatos.data.tipo!='admin'){
+            window.location.href = '../login/login.html';
+        }
+    }else{
         window.location.href = '../login/login.html';
     }
+ 
+    
 }
 
-var cerrarSesion = async ()=>{
-    let url = 'http://localhost/UTUConnect/backend/index.php?objetivo=sesion&request=cerrarSesion';
+async function cerrarSesion(){
+    console.log('cerrarSesion');
+    let url = window.location.origin+'/UTUConnect/backend/index.php?objetivo=sesion&request=cerrarSesion';
     let respuesta = await fetch(url);
-    obtenerUsuario();
+    let datos = await respuesta.json();
+    if (datos.success){
+        window.location.href = '../index.html';
+    };
 }
 

@@ -1,6 +1,6 @@
 <?php 
 
-include 'models/DAO/sesionDAO.php';
+include __DIR__ . '/../models/DAO/sesionDAO.php';
 
 session_start();
 $peticion = $_GET['request'];
@@ -22,27 +22,20 @@ function iniciarSesion(){
     $password = $_POST['password'];
     $tipo = $_POST['tipo'];
     $sesionDAO = new SesionDAO();
-    $respuesta = $sesionDAO->autentificar($user, $tipo, $password);
-    if($respuesta == null){
-        echo json_encode('Error datos incorrectos');
-    }else{
-        $_SESSION['sesion']=[
-            "user" => $user,
-            "tipo" => $tipo,
-            "name" => $respuesta['nombre']
-
-        ];
-        echo json_encode('Datos correctos');
-    }
-
+    $respuesta = $sesionDAO->iniciarSesion($user, $tipo, $password);
+    echo json_encode($respuesta);
 }
 
 function cerrarSesion(){
-    $_SESSION['sesion']=null;
+    $sesionDAO = new SesionDAO();
+    $respuesta = $sesionDAO->cerrarSesion();
+    echo json_encode($respuesta);
 }
 
 function obtenerSesion(){
-    echo json_encode($_SESSION['sesion']);
+    $sesionDAO = new SesionDAO();
+    $respuesta = $sesionDAO->obtenerSesion();
+    echo json_encode($respuesta);
 }
 
 ?>

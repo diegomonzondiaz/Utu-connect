@@ -1,5 +1,7 @@
 <?php 
-include 'database/database.php';
+require_once __DIR__. '/database/database.php';
+require_once __DIR__.'/../usuario.php';
+require_once __DIR__.'/../respuesta.php';
 class UsuarioDAO {
 
     private $connection;
@@ -9,24 +11,36 @@ class UsuarioDAO {
     }
 
 public function agregarUsuario($usuario){
-    $sql = `INSERT INTO usuario VALUES($usuario->ci, '$usuario->nombre', '$usuario->password')`;
+    $sql = "INSERT INTO usuario VALUES($usuario->ci, '$usuario->nombre', '$usuario->password');";
     $respuesta = $this->connection->query($sql);
+    if($respuesta){
+        $sql2="INSERT INTO usuario_rol VALUES($usuario->ci, '$usuario->tipo');";
+        $respuesta = $this->connection->query($sql2);
+        if($respuesta){
+            return new Respuesta(true, 'usuario creado', null);
+        }else{
+            return new Respuesta(false, 'rol no existe',null);
+            $sql3 = "DELETE FROM `usuarios` WHERE `ci`=$usuario->ci";
+            $respuesta = $this->connection->query($sql3);
+            echo json_encode($respuesta);
+        }
+            
+    }else{
+        return new Respuesta(false, 'usuario existe', null);
+    }
     return $respuesta;
 }
 public function modificarUsuario($usuario){
-    $connection = connection();
     $sql = `UPDATE INTO usuario SET ($usuario->ci, '$usuario->nombre', '$usuario->password') where ci = '$usuario->ci'`;
     $respuesta = $this->connection->query($sql);
     return $respuesta;
 }
 public function eliminarUsuario($usuario){
-    $connection = connection();
     $sql = `DELETE FROM usuario WHERE ci = '$usuario->ci'`;
     $respuesta = $this->connection->query($sql);
     return $respuesta;
 }
 public function obtenerUsuarios($usuario){
-    $connection = connection();
     $sql = `SELECT * FROM usuario;`;
     $respuesta = $this->connection->query($sql);
     return $respuesta;

@@ -74,6 +74,7 @@ div{
 
     #iframe{
         height: 80%;
+        width: 100vw;
         background-color: transparent;
         z-index: 1000000;
     }

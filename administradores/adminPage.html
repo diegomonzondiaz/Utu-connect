@@ -12,8 +12,8 @@
     <header>
         <nav>
             <ul>
-                <li id="btnCat">Categorias</li>
-                <li id="btnPub">Publicaciones</li>
+                <a href='./paginas/categorias.html' target="iframe">Categorias</a>
+                <a href='./paginas/publicaciones.html' target="iframe">publicaciones</a>
             </ul>
         </nav>
         <button id="cerrarSesion">
@@ -21,33 +21,13 @@
             Cerrar Sesion
         </button>
     </header>
-    <h2>Bienvenido de vuelta, nombre persona.</h2>
+    <h2 id="bienvenida">Bienvenido de vuelta, nombre persona.</h2>
     <main>
-        <iframe src="./paginas/publicaciones.html" id="iframe"></iframe>
+        <iframe src="./paginas/publicaciones.html" name="iframe" id="iframe"></iframe>
     </main>
     <footer>
 
     </footer>
 </body>
-<script>
-    window.onload = ()=>{
-        let p = 'publicaciones';
-        let c = 'categorias';
-        let btnCat = document.querySelector('#btnCat');
-        let btnPublicacion = document.querySelector('#btnPub');
-        let iframe = document.querySelector('#iframe');
-        let cambiar = (valor) => {
-            switch(valor){
-                case "categorias":
-                    iframe.src = './paginas/categorias.html';
-                    break;
-                case "publicaciones":
-                    iframe.src = './paginas/publicaciones.html';
-                    break;
-            }
-        }
-        btnCat.onclick = () => {cambiar(c)};
-        btnPub.onclick = () =>{cambiar(p)};
-    }
-</script>
+
 </html>
