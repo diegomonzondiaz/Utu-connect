@@ -11,7 +11,7 @@ let redirigir = (tipo) => {
             break;
 
         case 'iniciarSesion':
-            window.parent.location.href = window.location.origin+'/UTU-connect/login.html';
+            window.parent.location.href = window.location.origin+'/UTU-connect/login/login.html';
             break;
     }
 }

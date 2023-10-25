@@ -1,3 +1,5 @@
+import redirigir from "../login/js/redireccionamiento.js";
+
 window.onload = function() {
     obtenerUsuario();
     document.querySelector('#cerrarSesion').onclick = function() {
@@ -13,10 +15,10 @@ var obtenerUsuario = async ()=>{
     bienvenida.innerText = `Bienvenido/a ${respuestaDatos.data.name}`; 
     if (respuestaDatos.success){
         if (respuestaDatos.data.tipo!='admin'){
-            window.location.href = '../login/login.html';
+           redirigir('iniciarSesion');
         }
     }else{
-        window.location.href = '../login/login.html';
+        redirigir('iniciarSesion');
     }
  
     
