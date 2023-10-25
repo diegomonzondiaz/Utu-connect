@@ -22,10 +22,16 @@ function agregarPublicacion(){
     $titulo = $_POST['titulo'];
     $categoria = $_POST['categoria'];
     $tipo = $_POST['tipo'];
-    $contenido_img = $_POST['contenido_img'];
+    $contenido_img = $_FILES['contenido_img'];
     $contenido_texto = $_POST['contenido_texto'];
-    $contenido_archivo = $_POST['contenido_archivo'];
-    $publicacion = new publicacion($titulo, $categoria, $tipo, $contenido_archivo, $contenido_img, $contenido_texto);
+    $contenido_archivo = $_FILES['contenido_archivo'];
+    if($contenido_img){
+        $imagen = new imagenDAO.agregarImagen($contenido_img);
+    }
+    if($contenido_archivo){
+        $archivo = new archivoDAO.agregarArchivo($contenido_archivo);
+    }
+    $publicacion = new publicacion($titulo, $categoria, $tipo, $archivo, $imagen, $contenido_texto);
     $resultado = new publicacionDAO.agregarPublicacion($publicacion);
     return $resultado;
 }
