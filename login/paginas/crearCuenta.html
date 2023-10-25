@@ -5,29 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sesiar Inicion</title>
     <link rel="stylesheet" href="css/formularios.css">
-    <script src="../js/iniciarSesion.js"></script>
-
+    <script type="module" src="../js/crearCuenta.js"></script>
+    <script type="module" src="../js/redireccionamiento.js"></script>
 </head>
 <body>
 <h1>¡Bienvenido/a!</h1>
 <section class="grupo-boton_formulario">
     <h3>Registrate</h3>
-    <form action="" class="formulario">
+    <form action="" class="formulario" id="formulario_registro">
         <div class="grupo">
             <label for="ci">Cedula de identidad</label>
-            <input class="input_formulario" type="number" name="ci" id="ci" placeholder="Tu cedula">
+            <input required class="input_formulario" type="number" name="ci" id="ci" placeholder="Tu cedula">
         </div>
         <div class="grupo">
-            <label for="nombre">Nombre</label>
+            <label for="nombre">Nombre Completo</label>
             <input class="input_formulario" type="text" name="nombre" id="nombre" placeholder="Tu nombre">
         </div>
         <div class="grupo">
-            <label for="apellido">Apellido</label>
-            <input class="input_formulario" type="text" name="apellido" id="apellido" placeholder="Tu apellido">
-        </div>
-        <div class="grupo">
             <label for="contra">Contraseña</label>
-            <input class="input_formulario" type="text" name="contra" id="contra" placeholder="Crea una contraseña">
+            <input required class="input_formulario" type="text" name="password" id="contra" placeholder="Crea una contraseña">
         </div>
         <div class="grupo">
             <h3>¿Que tipo de usuario sos?</h3>
@@ -35,11 +31,11 @@
                 <ul>
                     <li>
                         <label for="docente">Soy Docente</label>
-                        <input type="checkbox" name="docente" id="docente">
+                        <input type="radio" required name="tipo" checked value="docente" id="docente">
                     </li>
                     <li>
                         <label for="alumno">Soy Alumno</label>
-                        <input type="checkbox" name="alumno" id="alumno">
+                        <input type="radio" required name="tipo" value="alumno" id="alumno">
                     </li>
                 </ul>
             </div>

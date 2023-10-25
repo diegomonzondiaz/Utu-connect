@@ -1,3 +1,5 @@
+import redirigir from "./redireccionamiento.js";
+
 window.onload = function() {
     document.querySelector("#formulario").onsubmit = function() {
         event.preventDefault();
@@ -9,7 +11,7 @@ window.onload = function() {
 
 var iniciarSesion = async (formulario)=>{
     let datos = new FormData(formulario);
-    let url = window.location.origin+'/UTUConnect/backend/index.php?objetivo=sesion&request=iniciarSesion';
+    let url = window.location.origin+'/UTU-connect/backend/index.php?objetivo=sesion&request=iniciarSesion';
     let config = {
         method: 'POST',
         body: datos
@@ -24,21 +26,6 @@ var iniciarSesion = async (formulario)=>{
         alert(respuestaDatos.mensaje);
     }
 }
-
-let redirigir = (tipo) => {
-    switch(tipo){
-        case 'alumno':
-            window.parent.location.href = '../../alumnos/alumnos-page.html';
-        break;
-        case 'admin':
-            window.parent.location.href = '../../administradores/adminPage.html';
-            break;
-        case 'docente':
-            window.parent.location.href = '../../docentes/docentes-page.html';
-            break;
-    }
-}
-
 
 var obtenerUsuario = async ()=>{
     let url = window.location.origin+'/UTUConnect/backend/index.php?objetivo=sesion&request=obtenerSesion';

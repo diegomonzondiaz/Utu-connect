@@ -19,10 +19,9 @@ public function agregarUsuario($usuario){
         if($respuesta){
             return new Respuesta(true, 'usuario creado', null);
         }else{
-            return new Respuesta(false, 'rol no existe',null);
-            $sql3 = "DELETE FROM `usuarios` WHERE `ci`=$usuario->ci";
+            $sql3 = "DELETE FROM `usuario` WHERE `ci`=$usuario->ci";
             $respuesta = $this->connection->query($sql3);
-            echo json_encode($respuesta);
+            return new Respuesta(false, 'rol no existe',null);
         }
             
     }else{
