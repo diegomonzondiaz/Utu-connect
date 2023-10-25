@@ -58,9 +58,12 @@ function eliminarPublicacion(){
     return $resultado;
 }
 function obtenerPublicacionesAdmin(){
+    $publicaciones = new publicacionDAO.obtenerPublicacionesAdmin();
+    echo $publicaciones;
 }
 function obtenerPublicacionesRol(){
     $rol = $_POST['rol'];
     $publicaciones = new publicacionDAO.obtenerPublicacionesRol($rol);
+    echo $publicaciones;
 }
 ?>

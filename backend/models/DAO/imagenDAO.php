@@ -12,11 +12,13 @@ function agregarImagen($imagen) {
     $extension = pathinfo($imagenName, PATHINFO_EXTENSION);
     $sql = `INSERT INTO imagen ('nombre') VALUES($imagenName)`;
     $respuesta = $connection->query($sql);
-    $id = $connection->insert_id;
-    $nuevoNombre = "$id.$extension";
-    $nuevaRespuesta = move_uploaded_file($rutaTemporal, __DIR__."/../../../assets/$nuevoNombre");
-    if($nuevaRespuesta){
-        return $nuevoNombre;
+    if($respuesta){
+        $id = $connection->insert_id;
+        $nuevoNombre = "$id.$extension";
+        $nuevaRespuesta = move_uploaded_file($rutaTemporal, __DIR__."/../../../assets/$nuevoNombre");
+        if($nuevaRespuesta){
+            return $nuevoNombre;
+        }
     }
 }
 function modificarImagen($imagen) {

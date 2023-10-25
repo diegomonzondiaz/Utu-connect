@@ -11,26 +11,28 @@ function agregarArchivo($archivo) {
     $extension = pathinfo($archivoName, PATHINFO_EXTENSION);
     $sql = `INSERT INTO archivo ('nombre') VALUES($archivoName)`;
     $respuesta = $connection->query($sql);
-    $id = $connection->insert_id;
-    $nuevoNombre = "$id.$extension";
-    $nuevaRespuesta = move_uploaded_file($rutaTemporal, __DIR__."/../../../assets/$nuevoNombre");
-    if($nuevaRespuesta){
+    if($respuesta){
+        $id = $connection->insert_id;
+        $nuevoNombre = "$id.$extension";
+        $nuevaRespuesta = move_uploaded_file($rutaTemporal, __DIR__."/../../../assets/$nuevoNombre");
+        if($nuevaRespuesta){
         return $nuevoNombre;
+        }
     }
 }
-function modificarArchivo($imagen) {
+function modificarArchivo($archivo) {
     $connection = connection();
-    $sql = `UPDATE INTO imagen set ('nombre') VALUES('$imagen')`;
+    $sql = `UPDATE INTO archivo set ('nombre') VALUES('$archivo')`;
     $respuesta = $connection->query($sql);
     return $respuesta;
 }
-function eliminarArchivo($publicacion) {
+function eliminarArchivo($archivo) {
     $connection = connection();
-    $sql = `DELETE * FROM publicacion WHERE id= $publicacion->id`;
+    $sql = `DELETE * FROM archivo WHERE id= $archivo->id`;
     $respuesta = $connection->query($sql);
     return $respuesta;
 }
-function obtenerArchivo($publicacion) {
+function obtenerArchivo($archivo) {
     $connection = connection();
     $sql = `SELECT * FROM publicacion`;
     $respuesta = $connection->query($sql);

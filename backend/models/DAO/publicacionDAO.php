@@ -24,13 +24,15 @@ function obtenerPublicacionesRol($rol) {
     $connection = connection();
     $sql = `SELECT * FROM publicacion WHERE rol = '$rol'`;
     $respuesta = $connection->query($sql);
-    return $respuesta;
+    $publicaciones = $respuesta->fetch_all(MYSQLI_ASSOC);
+    return $publicaciones;
 }
 function obtenerPublicacionesAdmin() {
     $connection = connection();
     $sql = `SELECT * FROM publicacion`;
     $respuesta = $connection->query($sql);
-    return $respuesta;
+    $publicaciones = $respuesta->fetch_all(MYSQLI_ASSOC);
+    return $publicaciones;
 }
 
 }
