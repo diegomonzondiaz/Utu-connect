@@ -25,12 +25,11 @@ var obtenerUsuario = async ()=>{
 }
 
 async function cerrarSesion(){
-    console.log('cerrarSesion');
     let url = window.location.origin+'/UTUConnect/backend/index.php?objetivo=sesion&request=cerrarSesion';
     let respuesta = await fetch(url);
     let datos = await respuesta.json();
     if (datos.success){
-        window.location.href = '../index.html';
+       redirigir('iniciarSesion');
     };
 }
 
