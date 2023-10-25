@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik&display=swap');
+
+:root{
+    --color_page: #64D7D6;
+    --color_sombra: rgba(90,194,193,0.75);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 10%;
+    background-color: #F3F4F6;
+}
+
+header nav{
+    position: relative;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header nav ul{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 1em;
+}
+
+#cerrarSesion{
+    position: absolute;
+    right: 0;
+    margin-right: 1em;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+header nav ul li{cursor: pointer;}
+
+#cerrarSesion:hover,
+header nav ul li:hover{
+    text-decoration: underline;
+}
+
+main{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 1em;
+}
+
+#iframe{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+footer{
+    width: 100%;
+    height: 10%;
+    background-color: #F3F4F6;
+    margin-top: 1em;
+}

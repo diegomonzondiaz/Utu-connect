@@ -1,0 +1,29 @@
+.elemento{
+    position: relative;
+    overflow: visible;
+    height: 200px;
+}
+
+.elemento label{
+    position: absolute;
+    top: -3px;
+    left: 0;
+    z-index: 2;
+    transition: all .3s;
+    color: rgb(162, 162, 162);
+    
+}
+.elemento input{
+    position: absolute;
+    z-index: 1;
+    border: none;
+    border-bottom: 1px solid gray;
+    outline: none;
+}
+
+.elemento input:focus  + label{
+    transform: translateY(-20px);
+    font-size: .8rem;
+    color: #aaaa;
+   
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <script src="admin.js"></script>
+    <link rel="stylesheet" href="administradores.css">
+    <script src="https://kit.fontawesome.com/c1ea718351.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li id="btnCat">Categorias</li>
+                <li id="btnPub">Publicaciones</li>
+            </ul>
+        </nav>
+        <button id="cerrarSesion">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Cerrar Sesion
+        </button>
+    </header>
+    <h2>Bienvenido de vuelta, nombre persona.</h2>
+    <main>
+        <iframe src="./paginas/publicaciones.html" id="iframe"></iframe>
+    </main>
+    <footer>
+
+    </footer>
+</body>
+<script>
+    window.onload = ()=>{
+        let p = 'publicaciones';
+        let c = 'categorias';
+        let btnCat = document.querySelector('#btnCat');
+        let btnPublicacion = document.querySelector('#btnPub');
+        let iframe = document.querySelector('#iframe');
+        let cambiar = (valor) => {
+            switch(valor){
+                case "categorias":
+                    iframe.src = './paginas/categorias.html';
+                    break;
+                case "publicaciones":
+                    iframe.src = './paginas/publicaciones.html';
+                    break;
+            }
+        }
+        btnCat.onclick = () => {cambiar(c)};
+        btnPub.onclick = () =>{cambiar(p)};
+    }
+</script>
+</html>

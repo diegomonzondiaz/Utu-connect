@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesiar Inicion</title>
+    <link rel="stylesheet" href="css/formularios.css">
+
+</head>
+<body>
+<h1>¡Bienvenido/a!</h1>
+<section class="grupo-boton_formulario">
+    <h3>Registrate</h3>
+    <form action="" class="formulario">
+        <div class="grupo">
+            <label for="ci">Cedula de identidad</label>
+            <input class="input_formulario" type="number" name="ci" id="ci" placeholder="Tu cedula">
+        </div>
+        <div class="grupo">
+            <label for="nombre">Nombre</label>
+            <input class="input_formulario" type="text" name="nombre" id="nombre" placeholder="Tu nombre">
+        </div>
+        <div class="grupo">
+            <label for="apellido">Apellido</label>
+            <input class="input_formulario" type="text" name="apellido" id="apellido" placeholder="Tu apellido">
+        </div>
+        <div class="grupo">
+            <label for="contra">Contraseña</label>
+            <input class="input_formulario" type="text" name="contra" id="contra" placeholder="Crea una contraseña">
+        </div>
+        <div class="grupo">
+            <h3>¿Que tipo de usuario sos?</h3>
+            <div class="seleccion">
+                <ul>
+                    <li>
+                        <label for="docente">Soy Docente</label>
+                        <input type="checkbox" name="docente" id="docente">
+                    </li>
+                    <li>
+                        <label for="alumno">Soy Alumno</label>
+                        <input type="checkbox" name="alumno" id="alumno">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <input type="submit" value="Crear Cuenta">
+    </form>
+    <button class="btn_cambiar" onclick="cambiar()">¿Ya tenes cuenta? Inicia Sesion.</button>
+</section>
+</body>
+<script>
+    const cambiar = ()=>{
+        let frame = window.parent.document.querySelector('#iframe');
+        frame.src = './paginas/iniciarSesion.html';
+     }
+</script>
+</html>

@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik&display=swap');
+
+:root{
+    --color_page: #64D7D6;
+    --color_sombra: rgba(90,194,193,0.75);
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+    width: 100vw;
+    height: 100vh;
+}
+
+.grupo-boton_formulario{
+    position: relative;
+    width: 60%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+    border: 1px solid var(--color_page);
+    border-radius: 5px;
+    box-shadow: 1px 4px 43px 0px var(--color_sombra);
+    background-color: #F3F4F6;
+    z-index: 10000;
+}
+
+.grupo-boton_formulario-iniciar{
+    position: relative;
+    width: 45%;
+    height: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: .5em;
+    border: 1px solid var(--color_page);
+    border-radius: 5px;
+    box-shadow: 1px 4px 43px 0px rgba(90,194,193,0.75);
+    background-color: #F3F4F6;
+    padding-bottom: .2em;
+    z-index: 10000;
+}
+
+.grupo-boton_formulario > h3,
+.grupo-boton_formulario-iniciar > h3{
+    position: relative;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: .15em;
+    padding-top: .15em;
+    border-bottom: 1px solid var(--color_page);
+}
+
+.formulario{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 80%;
+    gap: 1em;
+}
+
+hr{
+    width: 100%;
+    color: var(--color_page);
+}
+
+.grupo{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+
+.grupo > .seleccion{
+    position: relative;
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seleccion ul{
+    position: relative;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    list-style: none;
+}
+
+.seleccion > ul > li{
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input_formulario{
+    border: none;
+    border-bottom: 1px solid var(--color_page);
+    outline: none;
+    background-color: transparent;
+    position: relative;
+    width: 55%;
+    text-align: center;
+    margin-top: 1em;
+}
+
+.formulario > input[type="submit"]{
+    position: relative;
+    width: 70%;
+    border-radius: 20px;
+    border: 1px solid var(--color_page);
+    padding: .2em;
+    transition: all .2s;
+}
+
+.formulario > input[type="submit"]:hover{
+    background: linear-gradient(90deg, rgba(30,66,65,1) 20%, rgba(5,136,133,1) 51%, rgba(100,215,214,1) 100%);
+    color: #fff;
+    border: 1px solid #000;
+}
+
+.btn_cambiar{
+    background-color: transparent;
+    border: none;
+    color: #3c8180;
+    cursor: pointer;
+}
+
+.btn_cambiar:hover{
+    text-decoration: underline;
+}

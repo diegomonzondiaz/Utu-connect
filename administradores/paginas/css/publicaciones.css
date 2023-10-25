@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik&display=swap');
+
+:root{
+    --color_page: #64D7D6;
+    --color_sombra: rgba(90,194,193,0.75);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{
+    background-color: #fff;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#crearPublicaion{
+    position: relative;
+    padding: .4em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    position: relative;
+    height: min-content;
+    width: 35%;
+    border: 1px solid var(--color_page);
+    border-radius: 5px;
+    box-shadow: 1px 4px 43px 0px var(--color_sombra);
+}
+
+.grupo{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+    width: 100%;
+}
+
+#titulo{
+    display: none;
+}
+
+.grupo > textarea{
+    position: relative;
+    width: 90%;
+    height: 4em;
+    resize: none;
+}
+
+.grupo_horizontal{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    border: none;
+}
+
+.grupo_horizontal > label{
+    transition: text-decoration .3s;
+}
+
+input[type="submit"]{
+    position: relative;
+    width: 10em;
+    border-radius: 20px;
+    border: 1px solid var(--color_page);
+    padding: .2em;
+    transition: all .2s;
+}
+
+input[type="submit"]:hover{
+    background: linear-gradient(90deg, rgba(30,66,65,1) 20%, rgba(5,136,133,1) 51%, rgba(100,215,214,1) 100%);
+    color: #fff;
+    border: 1px solid #000;
+}
+
+.ds-none{
+    display: none;
+}
+
+.b-bottom{
+    border-bottom: 1px solid var(--color_page);
+}
+
+.label_hover:hover{
+    text-decoration: underline;
+}
+
+

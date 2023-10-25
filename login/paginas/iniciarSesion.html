@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesiar Inicion</title>
+    <link rel="stylesheet" href="css/formularios.css">
+    <script src="../js/iniciarSesion.js"></script>
+</head>
+<body>
+    <h1>¡Hola de vuelta!</h1>
+    <section class="grupo-boton_formulario-iniciar">
+        <h3>Iniciar Sesion</h3>
+        <form action="" class="formulario" id="formulario">
+            <div class="grupo">
+                <label for="ci">Cedula de identidad</label>
+                <input required class="input_formulario" type="number" name="user" id="ci" placeholder="Tu cedula">
+            </div>
+            <div class="grupo">
+                <label for="contra">Contraseña</label>
+                <input required class="input_formulario" type="text" name="password" id="contra" placeholder="Crea una contraseña">
+            </div>
+            <div class="seleccion">
+                <ul>
+                    <li>
+                        <label for="">Alumno</label>
+                        <input type="radio" name="tipo" id="" value="alumno" checked>
+                    </li>
+                    <li>
+                        <label for="password">Admin</label>
+                        <input type="radio" name="tipo" id="" value="admin">
+                    </li>
+                    <li>
+                        <label for="">Docente</label>
+                        <input type="radio" name="tipo" id="" value="docente">
+                    </li>
+                </ul>
+            </div>
+            <input type="submit" value="Iniciar Sesion">
+        </form>
+        <button class="btn_cambiar" onclick="cambiar()">¿No tenes cuenta? Crea una.</button>
+    </section>
+</body>
+<script>
+    const cambiar = ()=>{
+        let frame = window.parent.document.querySelector('#iframe');
+        frame.src = './paginas/crearCuenta.html';
+     }
+</script>
+</html>
