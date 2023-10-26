@@ -11,19 +11,19 @@
 <body>
 <h1>¡Bienvenido/a!</h1>
 <section class="grupo-boton_formulario">
-    <h3>Registrate</h3>
     <form action="" class="formulario" id="formulario_registro">
+        <h3>Registrate</h3>
         <div class="grupo">
             <label for="ci">Cedula de identidad</label>
-            <input required class="input_formulario" type="number" name="ci" id="ci" placeholder="Tu cedula">
+            <input required class="input_formulario" type="number" name="ci" id="ci" placeholder="  Tu cedula">
         </div>
         <div class="grupo">
             <label for="nombre">Nombre Completo</label>
-            <input class="input_formulario" type="text" name="nombre" id="nombre" placeholder="Tu nombre">
+            <input class="input_formulario" type="text" name="nombre" id="nombre" placeholder=" Tu nombre">
         </div>
         <div class="grupo">
             <label for="contra">Contraseña</label>
-            <input required class="input_formulario" type="text" name="password" id="contra" placeholder="Crea una contraseña">
+            <input required class="input_formulario" type="password" name="password" id="contra" placeholder="  Crea una contraseña">
         </div>
         <div class="grupo">
             <h3>¿Que tipo de usuario sos?</h3>
@@ -40,7 +40,7 @@
                 </ul>
             </div>
         </div>
-        <input type="submit" value="Crear Cuenta">
+        <input class="btn_crear" type="submit" value="Crear Cuenta">
     </form>
     <button class="btn_cambiar" onclick="cambiar()">¿Ya tenes cuenta? Inicia Sesion.</button>
 </section>
