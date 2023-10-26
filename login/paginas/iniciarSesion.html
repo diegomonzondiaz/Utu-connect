@@ -10,19 +10,19 @@
 </head>
 <body>
     <h1>¡Hola de vuelta!</h1>
-    <section class="grupo-boton_formulario-iniciar">
-        <h3>Iniciar Sesion</h3>
+    <section class="grupo-boton_formulario">
         <form action="" class="formulario" id="formulario">
+            <h3>Iniciar Sesion</h3>
             <div class="grupo">
                 <label for="ci">Cedula de identidad</label>
-                <input required class="input_formulario" type="number" name="user" id="ci" placeholder="Tu cedula">
+                <input required class="input_formulario" type="number" name="user" id="ci" placeholder="    Tu cedula">
             </div>
             <div class="grupo">
                 <label for="contra">Contraseña</label>
-                <input required class="input_formulario" type="text" name="password" id="contra" placeholder="Tu contraseña">
+                <input required class="input_formulario" type="text" name="password" id="contra" placeholder="  Tu contraseña">
             </div>
-            <div class="seleccion">
-                <ul>
+            <div class="grupo">
+                <ul style="border: 1ps solid black;">
                     <li>
                         <label for="">Alumno</label>
                         <input type="radio" name="tipo" id="" value="alumno" checked>
@@ -37,9 +37,9 @@
                     </li>
                 </ul>
             </div>
-            <input type="submit" value="Iniciar Sesion">
+            <input type="submit" class="btn_crear" value="Iniciar Sesion">
+            <button class="btn_cambiar" onclick="cambiar()">¿No tenes cuenta? Crea una.</button>
         </form>
-        <button class="btn_cambiar" onclick="cambiar()">¿No tenes cuenta? Crea una.</button>
     </section>
 </body>
 <script>

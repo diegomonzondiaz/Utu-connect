@@ -2,7 +2,7 @@
 
 :root{
     --color_page: #64D7D6;
-    --color_sombra: rgba(90,194,193,0.75);
+    --color_sombra: rgba(27, 120, 119, 0.75);
 
 }
 
@@ -18,6 +18,15 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: .5em;
+}
+
+h1{
+    position: relative;
+    padding: 1em;
+    width: 100%;
+    height: 10%;
+    text-align: center;
 }
 
 .grupo-boton_formulario{
@@ -27,20 +36,21 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 1em;
     align-items: center;
 }
 
 .formulario{
     position: relative;
-    width: 30%;
-    height: 60%;
+    width: 50%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1em;
-    padding-bottom: 5px;
     padding-top: 5px;
+    padding-bottom: 5px;
     border: 1px solid var(--color_page);
 }
 
@@ -60,7 +70,14 @@ body{
     align-items: center;
 }
 
-.grupo ul{
+.grupo ul, .grupo ul li{
+    position: relative;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
     list-style: none;
 }
 
@@ -79,6 +96,17 @@ body{
     background: linear-gradient(77deg, rgba(2,0,36,1) 0%, rgba(51,108,113,1) 100%);
 }
 
+.grupo ul{
+    position: relative;
+    width: 100%;
+    display: flex;
+    gap: 1em;
+}
+
+.grupo h3{
+    color: var(--color_sombra);
+}
+
 input[type="text"], input[type="password"], input[type="number"]{
     width: 95%;
     padding-top: 4px;
@@ -91,4 +119,15 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button { 
   -webkit-appearance: none; 
   margin: 0; 
+}
+
+
+.btn_cambiar{
+    background-color: transparent;
+    color: var(--color_sombra);
+    border: none;
+}
+
+.btn_cambiar:hover{
+    text-decoration: underline;
 }
