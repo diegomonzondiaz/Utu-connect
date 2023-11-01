@@ -16,7 +16,7 @@ switch ($tipoConsulta) {
     case "eliminar":
         eliminarPublicacion();
     break;
-    case "obtenerRol":
+    case "obtenerPublicacionesRol":
         obtenerPublicacionesRol();
     break;
     case "obtenerAdmin":
