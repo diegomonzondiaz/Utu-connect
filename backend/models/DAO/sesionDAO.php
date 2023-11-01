@@ -1,6 +1,7 @@
 <?php 
 require_once __DIR__ . '/database/database.php';
 require_once __DIR__.'/../respuesta.php';
+session_start();
 class SesionDAO {
     private $connection;
 

@@ -2,7 +2,6 @@
 
 require_once __DIR__ . '/../models/DAO/sesionDAO.php';
 
-session_start();
 $peticion = $_GET['consulta'];
 switch($peticion){
     case 'iniciarSesion':

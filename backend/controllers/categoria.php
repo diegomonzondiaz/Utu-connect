@@ -1,5 +1,5 @@
 <?php 
-include __DIR__ . '../models/DAO/categoriaDAO.php';
+require_once __DIR__ . '/../models/DAO/categoriaDAO.php';
 $tipoConsulta = $_GET['consulta'];
 
 switch ($tipoConsulta) {
