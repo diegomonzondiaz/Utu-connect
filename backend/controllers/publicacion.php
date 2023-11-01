@@ -3,6 +3,7 @@ include __DIR__ . '../models/publicacion.php';
 include __DIR__ . '../models/DAO/publicacionDAO.php';
 include __DIR__ . '../models/DAO/imagenDAO.php';
 include __DIR__ . '../models/DAO/archivoDAO.php';
+include __DIR__ . '../models/DAO/sesionDAO.php';
 $tipoConsulta = $_GET['consulta'];
 
 switch ($tipoConsulta) {
@@ -62,8 +63,14 @@ function obtenerPublicacionesAdmin(){
     echo $publicaciones;
 }
 function obtenerPublicacionesRol(){
-    $rol = $_POST['rol'];
-    $publicaciones = (new publicacionDAO())->obtenerPublicacionesRol($rol);
-    echo $publicaciones;
+    $respuesta = (new sesionDAO())->obtenerSesion();
+    if($respuesta->success){
+        $publicaciones = (new publicacionDAO())->obtenerPublicacionesRol($respuesta->data->tipo);
+        echo $publicaciones;
+    }else{
+        $publicaciones = (new publicacionDAO())->obtenerPublicacionesRol("general");
+        echo $publicaciones;
+    }
+    
 }
 ?>

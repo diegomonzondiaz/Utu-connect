@@ -22,7 +22,7 @@ function eliminarPublicacion($id) {
 }
 function obtenerPublicacionesRol($rol) {
     $connection = connection();
-    $sql = `SELECT * FROM publicacion WHERE rol = '$rol'`;
+    $sql = `SELECT * FROM publicacion WHERE rol_destino = '$rol'`;
     $respuesta = $connection->query($sql);
     $publicaciones = $respuesta->fetch_all(MYSQLI_ASSOC);
     return new Respuesta(true, null, $publicaciones);
