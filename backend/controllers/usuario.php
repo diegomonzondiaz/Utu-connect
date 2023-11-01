@@ -18,9 +18,6 @@ require_once __DIR__ . "/../models/DAO/usuarioDAO.php";
         case "eliminar":
             // eliminarUsuario();
         break;
-        case "obtener":
-            obtenerUsuario();
-        break;
     }
 
 
@@ -40,7 +37,7 @@ require_once __DIR__ . "/../models/DAO/usuarioDAO.php";
         $ci = $_POST['ci'];
         $tipo = $_POST['tipo'];
         $usuario = new usuario($ci, $nombre, $password, $tipo);
-        $resultado = new usuarioDAO.modificarUsuario($usuario);
+        $resultado = (new usuarioDAO())->modificarUsuario($usuario);
         return $resultado;
     }
 
@@ -54,14 +51,6 @@ require_once __DIR__ . "/../models/DAO/usuarioDAO.php";
        // return $resultado;
     }
 
-    function obtenerUsuario(){
-        $nombre = $_POST['nombre'];
-        $password = $_POST['password'];
-        $ci = $_POST['ci'];
-        $tipo = $_POST['tipo'];
-        $usuario = new usuario($ci, $nombre, $password, $tipo);
-        $resultado = new usuarioDAO.obtenerUsuario($usuario);
-        return $resultado;
-    }
+
 
 ?>
