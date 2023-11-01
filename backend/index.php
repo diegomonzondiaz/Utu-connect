@@ -1,21 +1,25 @@
-<?php include("Access-Control-Allow-Origin: *");
+<?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $tipoConsulta = $_GET['objetivo'];
 
 switch ($tipoConsulta) {
     case "usuario":
-        include('./controllers/usuario.php');
+        require __DIR__ . ('/controllers/usuario.php');
     break;
     case "publicacion":
-        include('./controllers/publicacion.php');
+        require __DIR__ . ('/controllers/publicacion.php');
     break;
     case "categoria":
-        include('./controllers/publicacion.php');
+        require __DIR__ . ('/controllers/publicacion.php');
     break;
     case "rol":
-        include('./controllers/rol.php');
+        require __DIR__ . ('/controllers/rol.php');
     break;
     case 'sesion':
-        include('./controllers/sesion.php');
+        require_once __DIR__ . ('/controllers/sesion.php');
         break;
 }
 ?>

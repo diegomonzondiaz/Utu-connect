@@ -20,7 +20,11 @@ var iniciarSesion = async (formulario)=>{
     let respuestaDatos = await respuesta.json();
     console.log(respuestaDatos);
     if(respuestaDatos.success){
-        redirigir(formulario.tipo.value);
+        if(formulario.tipo.value == 'admin'){
+            redirigir('admin')
+        }else{
+            redirigir('publicaciones');
+        }
     }else{
         console.log(respuestaDatos.mensaje);
         alert(respuestaDatos.mensaje);
@@ -33,7 +37,11 @@ var obtenerUsuario = async ()=>{
     let respuestaDatos = await respuesta.json();
     console.log(respuestaDatos);
     if (respuestaDatos.success){
-        redirigir(respuestaDatos.data.tipo);
+        if(respuestaDatos.data.tipo == 'admin'){
+            redirigir('admin')
+        }else{
+            redirigir('publicaciones');
+        }
     }
     
 }

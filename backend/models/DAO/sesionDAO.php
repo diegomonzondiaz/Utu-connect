@@ -1,5 +1,5 @@
 <?php 
-require_once __DIR__ . 'database/database.php';
+require_once __DIR__ . '/database/database.php';
 require_once __DIR__.'/../respuesta.php';
 class SesionDAO {
     private $connection;
