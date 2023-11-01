@@ -1,6 +1,6 @@
 <?php 
 
-include __DIR__ . '/../models/DAO/sesionDAO.php';
+require_once __DIR__ . '/../models/DAO/sesionDAO.php';
 
 session_start();
 $peticion = $_GET['request'];
