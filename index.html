@@ -26,12 +26,13 @@
             </select>
             </div>
             <div class="iniciar_cerar">
-                <a href="./login/login.html">Iniciar sesion</a>
+                <a id="inicionSesiada" href="./login/login.html">Iniciar sesion</a>
             </div>
         </nav>
         <div id="btn_menu">
             <i class="fa fa-solid fa-bars"></i>
         </div>
+        <button onclick="cerrarSesion()" id="cerrarSesion">Cerrar Sesion</button>
     </header>
     <div class="contenedor_nav-mobile menu-oculto">
         <div class="blur" id="blur"></div>
@@ -40,7 +41,8 @@
                 <img src="assets/img/logo-mobile-removebg-preview.png" alt="">
             </div>
             <div class="iniciar_cerar">
-                <a href="./login/login.html">Iniciar sesion <i class="fa-solid fa-hands" style="color: #ffffff;"></i></a>
+                <a id="sesiarInicion" href="./login/login.html">Iniciar sesion <i class="fa-solid fa-hands" style="color: #ffffff;"></i></a>
+                <button onclick="cerrarSesion()" id="cerrarSesionMobile">Cerrar Sesion</button>
             </div>
             <div class="grupo-catogorias">
                 Categorias:
@@ -53,6 +55,7 @@
         </nav>
     </div>
     <main>
+        <h3 id="nombre-sesion"></h3>
         <div class="contenedor_publicaciones">
             <div class="publicacion">
                 <div class="img_publicacion">

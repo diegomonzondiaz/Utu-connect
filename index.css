@@ -21,6 +21,7 @@ a,
 a:visited{
     color:#ffffff;
     text-decoration: none;
+    display: none;
 }
 
 body{
@@ -125,7 +126,7 @@ main{
     position: absolute;
     left: 0;
     margin-left: 1em;  
-    border: 1px solid #000;
+    border: 1px solid blue;
 }
 
 .contenido_publicacion{
