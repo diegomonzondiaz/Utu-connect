@@ -1,9 +1,9 @@
 <?php 
-include 'database/database.php';
+include __DIR__ . 'database/database.php';
 class archivoDAO {
 
 
-}
+
 function agregarArchivo($archivo) {
     $connection = connection();
     $archivoName = $archivo['name'];
@@ -38,5 +38,5 @@ function obtenerArchivo($archivo) {
     $respuesta = $connection->query($sql);
     return $respuesta;
 }
-
+}
 ?>

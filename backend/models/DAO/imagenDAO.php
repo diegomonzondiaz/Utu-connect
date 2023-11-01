@@ -1,10 +1,10 @@
 <?php 
-include 'database/database.php';
+include __DIR__ . 'database/database.php';
 class imagenDAO {
 
 
 
-}
+
 function agregarImagen($imagen) {
     $connection = connection();
     $imagenName = $imagen['name'];
@@ -38,5 +38,6 @@ function obtenerImagen($publicacion) {
     $sql = `SELECT * FROM publicacion`;
     $respuesta = $connection->query($sql);
     return $respuesta;
+}
 }
 ?>
