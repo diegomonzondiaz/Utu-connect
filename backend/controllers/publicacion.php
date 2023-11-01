@@ -1,8 +1,8 @@
 <?php 
-include '../models/publicacion.php';
-include '../models/DAO/publicacionDAO.php';
-include '../models/DAO/imagenDAO.php';
-include '../models/DAO/archivoDAO.php';
+include __DIR__ . '../models/publicacion.php';
+include __DIR__ . '../models/DAO/publicacionDAO.php';
+include __DIR__ . '../models/DAO/imagenDAO.php';
+include __DIR__ . '../models/DAO/archivoDAO.php';
 $tipoConsulta = $_GET['consulta'];
 
 switch ($tipoConsulta) {
