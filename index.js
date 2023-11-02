@@ -62,9 +62,6 @@ async function obtenerPublicaciones(){
         console.log(datos.data);
         mostrarPublicaiciones(datos.data);
     }
-
-    
-
 }
 
 async function cerrarSesion(){
@@ -83,12 +80,11 @@ function mostrarPublicaiciones(publicaciones) {
    publicaciones.forEach(publicacion => {
     contenedor.innerHTML += `
         <div class="${publicacion.contenido_img != '' ? "publicacionConImagen" : "publicacionSinImagen"}">
+            <h3 class="titulo_publicacion">${publicacion.titulo}</h3>
             <div class="img_publicacion">
-                <img src="" alt="">
                 ${publicacion.contenido_img != "" ? '<img src='+publicacion.contenido_img+' alt="">' : ''}
             </div>
             <div class="contenido_publicacion">
-                <h3>${publicacion.titulo}</h3>
                 <p>
                     ${publicacion.contenido_texto}    
                 </p>
