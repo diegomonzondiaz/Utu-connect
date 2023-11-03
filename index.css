@@ -24,7 +24,7 @@
 
 a,
 a:visited{
-    color:#ffffff;
+    color: #454545;;
     text-decoration: none;
     display: none;
 }
@@ -32,17 +32,17 @@ a:visited{
 body{
     width: 100vw; 
     height: 100vh; 
-    background-color: #dadada;
+    background-color: #fff;
 }
 
 header{
-    position: relative;
-    width: 100%;
-    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(101, 101, 101);
+    position: relative;
+    width: 100%;
+    height: 10%;
+    background-color: #dedede;
 }
 
 .logo{
@@ -66,23 +66,14 @@ header{
     height: 100%;
     font-size: 20px;
     text-align: center;
-    color: #fff;
+    color: #454545;
     padding: .4em;
 }
 
 .nav-desktop{
     position: absolute;
     right: 0;
-    width: 30%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-right: 1em;
-}
-
-.grupo-select{
-    width: min-content;
-    color: #ffffff;
+    width: 10em;
 }
 
 .nav-mobile{
@@ -97,10 +88,11 @@ header{
 main{
     position: relative;
     width: 100%;
-    height: 80%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #ffff;
 }
 
 .contenedor_publicaciones{
@@ -117,41 +109,58 @@ main{
 .publicacionConImagen{
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 50%;
+    gap: 1em;
+    width: 60%;
+    height: 70%;
+    margin: 0 auto;
+    margin-top: 1em;
     background-color: #f4f4f4;
     border: 2px solid var(--color_page);
-    margin-top: 1em;
     border-radius: 15px;
     overflow: hidden;
 }
 
-.titulo_publicacion{
+.cabecera_publi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     position: absolute;
-    text-align: center;
-    width: 100%;
     top: 0;
-    padding: 2px;
-    border-bottom: 1px solid var(--color_page);
-    background-color: var(--color_sombra);
-    color: #fff;
-}
-
-.img_publicacion{
-    position: absolute;
     left: 0;
-    margin-left: 1em;
-    width: 20%;
-    height: 70%;
-    border: 1px solid red;
+    width: 100%;
+    border-bottom: 2px solid var(--color_page);
+    background-color: rgb(210, 210, 210);
 }
 
-.img_publicacion > img{
+.img_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    width: 100%;
-    height: 100%;
+    border-radius: 10px;
+    max-width: 90%;
+    min-width: 70%;
+    max-height: 60%;
+    min-height: 50%;
+    overflow: hidden;
+    border: 1px solid var(--color_page);
+    background-color: #fff;
+}
+
+.img_container::-webkit-scrollbar{
+    display: none;
+}
+
+.img_container img{
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    min-width: 100px;
+    min-height: 100px;
 }
 
 #cerrarSesionMobile,
@@ -159,7 +168,7 @@ main{
     background-color: transparent;
     border: none;
     outline: none;
-    color: #fff;
+    color: #454545;
 }
 
 #cerrarSesion{
@@ -175,11 +184,14 @@ main{
 
 footer{
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 10%;
-    background-color: rgb(101, 101, 101);
+    background-color: #dedede;
 }
 
 .menu-oculto .blur{display: none}
@@ -194,18 +206,6 @@ footer{
     animation: mostrar .3s;
 }
 
-.grupo-catogorias{
-    position: relative;
-    width: 100%;
-    height: max-content;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: .5em;
-    color: #fff;
-    justify-content: center;
-}
-
 .blur{
     position: absolute;
     top: 0;
@@ -217,8 +217,8 @@ footer{
 }
 
 @media screen and (max-width: 600px){
-    .nav-desktop{display: none;}
-
+    .nav-desktop,
+    #cerrarSesion,
     .titulo{display: none;}
 
     .logo{
@@ -234,7 +234,7 @@ footer{
         position: absolute;
         left: 0;
         margin-left: 1em;
-        color: #FFFF;
+        color: #454545;
     }
 
     #btn_menu i{
@@ -256,54 +256,8 @@ footer{
         padding-top: 4em;
         width: 20em;
         height: 100vh;
-        background-color: rgb(101, 101, 101);
+        background-color: rgb(223, 223, 223);
         z-index: 10000000;
     }
-
-    .contenedor_publicaciones{
-        position: relative;
-        padding: 1em;
-        box-sizing: border-box;
-        width: 69%;
-        height: 100%;
-        background-color: transparent;
-        overflow-y: scroll;
-    }
-    
-    .publicacionConImagen,
-    .publicacionSinImagen{
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        gap: 1em;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 68%;
-        background-color: #fff;
-        border: 1px solid black;
-        margin-top: 1em;
-    }
-
-    .img_publicacion{
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        margin-top: 1em;
-    }
-
-    .img_publicacion > img{
-        width: auto;
-        height: 100%;
-    }
-
-    .contenedor_publicaciones{
-        position: relative;
-        width: 100%;
-        height: max-content;
-    }
-
 }
 

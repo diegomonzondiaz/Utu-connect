@@ -14,7 +14,7 @@ var obtenerUsuario = async ()=>{
     let bienvenida = document.querySelector('#bienvenida');
     bienvenida.innerText = `Bienvenido/a ${respuestaDatos.data.name}`; 
     if (respuestaDatos.success){
-        if (respuestaDatos.data.tipo!='admin'){
+        if (respuestaDatos.data.tipo!='Admin'){
            redirigir('iniciarSesion');
         }
     }else{

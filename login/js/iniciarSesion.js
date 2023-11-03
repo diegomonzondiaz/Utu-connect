@@ -20,7 +20,7 @@ var iniciarSesion = async (formulario)=>{
     let respuestaDatos = await respuesta.json();
     console.log(respuestaDatos);
     if(respuestaDatos.success){
-        if(formulario.tipo.value == 'admin'){
+        if(formulario.tipo.value == 'Admin'){
             redirigir('admin')
         }else{
             redirigir('publicaciones');

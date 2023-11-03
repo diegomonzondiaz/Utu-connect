@@ -7,10 +7,8 @@ window.onload = function() {
     let btnMenu = document.querySelector('#btn_menu').onclick = function() {
         abrirMenu(contenedor);
     }
-
-    obtenerPublicaciones();
     obtenerSesion();
-    
+    obtenerPublicaciones();
 }
 
 function abrirMenu(contenedor){
@@ -36,7 +34,7 @@ var obtenerSesion = async ()=>{
         `;
 
         document.querySelector('.titulo').innerHTML = `
-            Ver Publicaciones <br> <small>${respuestaDatos.data.tipo}</small>
+            Ver Publicaciones <br> <small>(${respuestaDatos.data.tipo})</small>
         `
         document.querySelector('#cerrarSesion').style.display = 'block';
         document.querySelector('#cerrarSesionMobile').style.display = 'block';
@@ -50,7 +48,6 @@ var obtenerSesion = async ()=>{
 
         document.querySelector('#cerrarSesion').style.display = 'none';
         document.querySelector('#cerrarSesionMobile').style.display = 'none';
-
     }
 }
 
@@ -58,9 +55,12 @@ async function obtenerPublicaciones(){
     let url = window.location.origin + '/UTU-connect/backend/index.php?objetivo=publicacion&consulta=obtenerPublicacionesRol';
     let respuesta = await fetch(url);
     let datos = await respuesta.json();
+    console.log(datos.data);
     if(datos.success){
         console.log(datos.data);
         mostrarPublicaiciones(datos.data);
+    }else{
+       
     }
 }
 
@@ -80,10 +80,8 @@ function mostrarPublicaiciones(publicaciones) {
    publicaciones.forEach(publicacion => {
     contenedor.innerHTML += `
         <div class="${publicacion.contenido_img != '' ? "publicacionConImagen" : "publicacionSinImagen"}">
-            <h3 class="titulo_publicacion">${publicacion.titulo}</h3>
-            <div class="img_publicacion">
-                ${publicacion.contenido_img != "" ? '<img src='+publicacion.contenido_img+' alt="">' : ''}
-            </div>
+            <div class="cabecera_publi"><h3 class="titulo_publicacion">${publicacion.titulo}</h3> <p>${publicacion.categoria}</p></div>
+            ${publicacion.contenido_img != "" ? '<div class="img_container"><img src='+publicacion.contenido_img+' alt=""></div>' : ''}
             <div class="contenido_publicacion">
                 <p>
                     ${publicacion.contenido_texto}    
