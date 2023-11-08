@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik&display=swap');
+
+:root{
+    --color_page: #64D7D6;
+    --color_sombra: rgba(90,194,193,0.75);
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    position: relative;
+    width: 30%;
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5em;
+    padding-bottom: .5em;
+    border: 1px solid var(--color_sombra);
+}
+
+form h3{
+    position: relative;
+    width: 100%;
+    height: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    background-color: #717171;
+    border-bottom: 1px solid var(--color_sombra);
+}
+
+.grupo_input{
+    position: relative;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+input[type="text"]{
+    width: 60%;
+}
+
+table {
+    width: 70%;
+    border-collapse: collapse;
+    border: 2px solid var(--color_sombra);
+  }
+
+  th, td {
+    border: 1px solid var(--color_sombra);
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #717171;
+    color: #fff;
+  }
+
+.btn_crear,
+button{
+    position: relative;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    border: 1px solid #000;
+    border-radius: 3px;
+    outline: none;
+    padding: 2px;
+}
+
+.btn_crear:hover,
+button:hover{
+    text-decoration: underline;
+}

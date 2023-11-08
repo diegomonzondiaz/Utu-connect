@@ -17,16 +17,18 @@ switch ($tipoConsulta) {
  function agregarCategoria(){
     $categoria = $_POST['categoria'];
     $resultado = (new categoriaDAO())->agregarCategoria($categoria);
-    echo $resultado;
+    echo json_encode($resultado);
  }
+
  function eliminarCategoria(){
     $categoria = $_POST['categoria'];
     $resultado = (new categoriaDAO())->eliminarCategoria($categoria);
-    echo $resultado;
+    echo json_encode($resultado);
  }
+ 
  function obtenerCategoria(){
     $resultado = (new categoriaDAO())->obtenerCategoria();
-    echo $resultado;
+    echo json_encode($resultado);
  }
 
 

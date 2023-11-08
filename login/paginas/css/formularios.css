@@ -79,7 +79,7 @@ h1{
     position: relative;
     width: 60%;
     height: 10%;
-    color: #fff;
+    color: #000;
     background-color: var(--color_page);
     border: 1px solid var(--color_sombra);
     transition: all .3s;
@@ -87,6 +87,7 @@ h1{
 
 .btn_crear:hover{
     background: rgb(2,0,36);
+    color: #fff;
     background: linear-gradient(77deg, rgba(2,0,36,1) 0%, rgba(51,108,113,1) 100%);
 }
 

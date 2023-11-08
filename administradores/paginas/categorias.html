@@ -4,8 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>categorias</title>
+    <link rel="stylesheet" href="css/categorias.css">
+    <script src="https://kit.fontawesome.com/c1ea718351.js" crossorigin="anonymous"></script>
+    <script src="js/categorias.js"></script>
 </head>
 <body>
-    Categorias
+    <form action="" id="formulario">
+        <h3 for="categorias">Agrega una categoria</h3>
+        <div class="grupo_input">
+            <input type="text" name="categoria" id="categoria" placeholder="Nombre de la nueva categoria">
+            <input class="btn_crear" type="submit" value="Agregar">
+        </div>
+    </form>
+
+    <table>
+        <thead>
+          <tr>
+            <th colspan="3">Categorias</th>
+          </tr>
+        </thead>
+        <tbody id="tabla">
+        </tbody>
+      </table>
 </body>
 </html>
