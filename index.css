@@ -151,7 +151,8 @@ main{
     background-color: #fff;
 }
 
-.img_container::-webkit-scrollbar{
+.img_container::-webkit-scrollbar,
+.contenedor_publicaciones::-webkit-scrollbar{
     display: none;
 }
 
@@ -262,7 +263,6 @@ footer{
 
     .contenedor_publicaciones{
         width: 100%;
-        border: 1px solid red;
     }
 
     .publicacionSinImagen,
