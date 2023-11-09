@@ -1,6 +1,11 @@
 window.onload = function() {
     obtener();
+    let fromluario = document.querySelector('#formularioCrear').onsubmit = () => {
+        event.preventDefault();
+        agregar(event.target);
+    }
 }
+// var formulario = document.querySelector('#formularioCrear');
 
 async function obtener(){
     let url = window.location.origin+"/UTU-connect/backend/controllers/categoria.php?consulta=obtener";
@@ -17,24 +22,40 @@ function listar(categorias){
         <tr>
            <td>${categoria.nombre}</td>
            <td><button id="eliminar" onclick="eliminar('${categoria.nombre}')"><i class="fa-solid fa-trash"></i> Eliminar</button></td>
-           <td><button onclick="abrirEdicion()"><i class="fa-solid fa-pencil"></i> Editar</button></td>
         </tr>
         `;
     });
 }
 
 async function eliminar(categoria){
-    console.log(categoria);
-    let url = window.location.origin+'/UTU-connect/backend/controllers/categoria.php?consulta=eliminar';
-    let categoriaJSON = JSON.stringify(categoria);
+    let url = window.location.origin+`/UTU-connect/backend/controllers/categoria.php?consulta=eliminar&categoria=${categoria}`;
+    let respuesta = await fetch(url);
+    let respuestaDatos = await respuesta.json();
+    console.log(respuestaDatos);
+    if(respuestaDatos.success){
+        alert(respuestaDatos.mensaje);
+        obtener();
+    }else{
+        alert(respuestaDatos.mensaje);
+    }
+    obtener();
+}
+
+async function agregar(formulario){
+    let url = window.location.origin+'/UTU-connect/backend/controllers/categoria.php?consulta=agregar';
+    let categoriaDato = new FormData(formulario);
+    console.log(categoriaDato);
     let configuracion = {
         method: "POST",
-        body:{
-          categoria: categoriaJSON
-        }
+        body:categoriaDato
       };
-    console.log(configuracion);
     let respuesta = await fetch(url, configuracion);
-    console.log(respuesta.json());
-    //window.location.reload();
+    let respuestaDatos = await respuesta.json();
+    if(respuestaDatos.success){
+        alert(respuestaDatos.mensaje);
+        obtener();
+    }else{
+        alert(respuestaDatos.mensaje);
+    }
 }
+

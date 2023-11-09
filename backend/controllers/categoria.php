@@ -21,7 +21,7 @@ switch ($tipoConsulta) {
  }
 
  function eliminarCategoria(){
-    $categoria = $_POST['categoria'];
+    $categoria = $_GET['categoria'];
     $resultado = (new categoriaDAO())->eliminarCategoria($categoria);
     echo json_encode($resultado);
  }
