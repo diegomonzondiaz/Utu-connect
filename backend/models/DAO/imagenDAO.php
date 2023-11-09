@@ -10,7 +10,7 @@ function agregarImagen($imagen) {
     $imagenName = $imagen['name'];
     $rutaTemporal =$imagen['tmp_name'];
     $extension = pathinfo($imagenName, PATHINFO_EXTENSION);
-    $sql = `INSERT INTO imagen ('nombre') VALUES($imagenName)`;
+    $sql = "INSERT INTO imagen ('nombre') VALUES($imagenName)";
     $respuesta = $connection->query($sql);
     if($respuesta){
         $id = $connection->insert_id;
@@ -23,19 +23,19 @@ function agregarImagen($imagen) {
 }
 function modificarImagen($imagen) {
     $connection = connection();
-    $sql = `UPDATE INTO imagen set ('nombre') VALUES('$imagen')`;
+    $sql = "UPDATE INTO imagen set ('nombre') VALUES('$imagen')";
     $respuesta = $connection->query($sql);
     return new Respuesta(true, null, $respuesta);
 }
 function eliminarImagen($publicacion) {
     $connection = connection();
-    $sql = `DELETE * FROM publicacion WHERE id= $publicacion->id`;
+    $sql = "DELETE * FROM publicacion WHERE id= $publicacion->id";
     $respuesta = $connection->query($sql);
     return new Respuesta(true, null, $respuesta);
 }
 function obtenerImagen($publicacion) {
     $connection = connection();
-    $sql = `SELECT * FROM publicacion`;
+    $sql = "SELECT * FROM publicacion";
     $respuesta = $connection->query($sql);
     return new Respuesta(true, null, $respuesta);
 }
