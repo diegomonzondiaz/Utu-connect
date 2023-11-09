@@ -9,7 +9,7 @@ function agregarArchivo($archivo) {
     $archivoName = $archivo['name'];
     $rutaTemporal =$archivo['tmp_name'];
     $extension = pathinfo($archivoName, PATHINFO_EXTENSION);
-    $sql = "INSERT INTO archivo ('nombre') VALUES($archivoName)";
+    $sql = `INSERT INTO archivo ('nombre') VALUES($archivoName)`;
     $respuesta = $connection->query($sql);
     if($respuesta){
         $id = $connection->insert_id;
@@ -22,19 +22,19 @@ function agregarArchivo($archivo) {
 }
 function modificarArchivo($archivo) {
     $connection = connection();
-    $sql = "UPDATE INTO archivo set ('nombre') VALUES('$archivo')";
+    $sql = `UPDATE INTO archivo set ('nombre') VALUES('$archivo')`;
     $respuesta = $connection->query($sql);
     return new Respuesta(true, "", $respuesta);
 }
 function eliminarArchivo($archivo) {
     $connection = connection();
-    $sql = "DELETE * FROM archivo WHERE id= $archivo->id";
+    $sql = `DELETE * FROM archivo WHERE id= $archivo->id`;
     $respuesta = $connection->query($sql);
     return new Respuesta(true, "", $respuesta);
 }
 function obtenerArchivo($archivo) {
     $connection = connection();
-    $sql = "SELECT * FROM publicacion";
+    $sql = `SELECT * FROM publicacion`;
     $respuesta = $connection->query($sql);
     return new Respuesta(true, "", $respuesta);
 }

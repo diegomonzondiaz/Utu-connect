@@ -19,7 +19,7 @@ public function agregarUsuario($usuario){
         if($respuesta){
             return new Respuesta(true, 'usuario creado', null);
         }else{
-            $sql3 = "DELETE FROM 'usuario' WHERE 'ci'=$usuario->ci";
+            $sql3 = "DELETE FROM `usuario` WHERE `ci`=$usuario->ci";
             $respuesta = $this->connection->query($sql3);
             return new Respuesta(false, 'rol no existe',null);
         }
@@ -30,17 +30,17 @@ public function agregarUsuario($usuario){
     return $respuesta;
 }
 public function modificarUsuario($usuario){
-    $sql = "UPDATE INTO usuario SET ($usuario->ci, '$usuario->nombre', '$usuario->password') where ci = '$usuario->ci'";
+    $sql = `UPDATE INTO usuario SET ($usuario->ci, '$usuario->nombre', '$usuario->password') where ci = '$usuario->ci'`;
     $respuesta = $this->connection->query($sql);
     return $respuesta;
 }
 public function eliminarUsuario($usuario){
-    $sql = "DELETE FROM usuario WHERE ci = '$usuario->ci'";
+    $sql = `DELETE FROM usuario WHERE ci = '$usuario->ci'`;
     $respuesta = $this->connection->query($sql);
     return $respuesta;
 }
 public function obtenerUsuarios($usuario){
-    $sql = "SELECT * FROM usuario;";
+    $sql = `SELECT * FROM usuario;`;
     $respuesta = $this->connection->query($sql);
     return $respuesta;
 }

@@ -10,7 +10,7 @@ class SesionDAO {
     }
 
     public function autentificar($usuario, $tipo_usuario, $password){
-        $sql = "SELECT * FROM 'usuario' WHERE ci IN(SELECT 'ci_usuario' FROM 'usuario_rol' WHERE 'rol_usuario' = '$tipo_usuario') AND 'ci' = $usuario AND 'contraseña' = '$password'";
+        $sql = "SELECT * FROM `usuario` WHERE ci IN(SELECT `ci_usuario` FROM `usuario_rol` WHERE `rol_usuario` = '$tipo_usuario') AND `ci` = $usuario AND `contraseña` = '$password'";
         $respuesta = $this->connection->query($sql);
         $dato = $respuesta->fetch_assoc();
         return $dato;
