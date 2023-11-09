@@ -60,10 +60,15 @@ header nav ul{
     background-color: transparent;
 }
 
-header nav ul li{cursor: pointer;}
+header nav ul a,
+header nav ul a:visited{
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+}
 
 #cerrarSesion:hover,
-header nav ul li:hover{
+header nav ul a:hover{
     text-decoration: underline;
 }
 
@@ -76,6 +81,8 @@ main{
     height: 100%;
     margin-top: 1em;
 }
+
+#bienvenida{margin-top: 1em;}
 
 #iframe{
     position: relative;
