@@ -17,7 +17,7 @@ function agregarImagen($imagen) {
         $nuevoNombre = "$id.$extension";
         $nuevaRespuesta = move_uploaded_file($rutaTemporal, __DIR__."/../../../assets/$nuevoNombre");
         if($nuevaRespuesta){
-            return $nuevoNombre;
+            return new Respuesta(true, null, $nuevoNombre);
         }
     }
 }
@@ -25,19 +25,19 @@ function modificarImagen($imagen) {
     $connection = connection();
     $sql = `UPDATE INTO imagen set ('nombre') VALUES('$imagen')`;
     $respuesta = $connection->query($sql);
-    return $respuesta;
+    return new Respuesta(true, null, $respuesta);
 }
 function eliminarImagen($publicacion) {
     $connection = connection();
     $sql = `DELETE * FROM publicacion WHERE id= $publicacion->id`;
     $respuesta = $connection->query($sql);
-    return $respuesta;
+    return new Respuesta(true, null, $respuesta);
 }
 function obtenerImagen($publicacion) {
     $connection = connection();
     $sql = `SELECT * FROM publicacion`;
     $respuesta = $connection->query($sql);
-    return $respuesta;
+    return new Respuesta(true, null, $respuesta);
 }
 }
 ?>
