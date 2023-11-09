@@ -38,7 +38,7 @@ var obtenerUsuario = async ()=>{
     console.log(respuestaDatos);
     if (respuestaDatos.success){
         if(respuestaDatos.data.tipo == 'admin'){
-            redirigir('admin')
+            redirigir('admin');
         }else{
             redirigir('publicaciones');
         }
