@@ -5,7 +5,6 @@ window.onload = function() {
         agregar(event.target);
     }
 }
-// var formulario = document.querySelector('#formularioCrear');
 
 async function obtener(){
     let url = window.location.origin+"/UTU-connect/backend/controllers/categoria.php?consulta=obtener";
