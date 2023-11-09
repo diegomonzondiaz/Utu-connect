@@ -5,6 +5,9 @@ window.onload = function() {
     document.querySelector('#cerrarSesion').onclick = function() {
         cerrarSesion();
     }
+    document.querySelector('#cerrarSesionMobile').onclick = function() {
+        cerrarSesion();
+    }
 }
 
 var obtenerUsuario = async ()=>{

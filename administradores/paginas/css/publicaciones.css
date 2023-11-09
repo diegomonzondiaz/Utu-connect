@@ -100,4 +100,12 @@ input[type="submit"]:hover{
     text-decoration: underline;
 }
 
+@media screen and (max-width: 650px){
+    #crearPublicaion{
+        width: 97vw;
+        box-shadow: none;
+        border: 2px solid var(--color_sombra);
+    }
+    
+}
 

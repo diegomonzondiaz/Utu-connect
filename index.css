@@ -216,10 +216,10 @@ footer{
     z-index: 100;
 }
 
-@media screen and (max-width: 600px){
+@media screen and (max-width: 650px){
     .nav-desktop,
     #cerrarSesion,
-    .titulo{display: none;}
+    .titulo{display: none !important;}
 
     .logo{
         position: relative;
@@ -258,6 +258,16 @@ footer{
         height: 100vh;
         background-color: rgb(223, 223, 223);
         z-index: 10000000;
+    }
+
+    .contenedor_publicaciones{
+        width: 100%;
+        border: 1px solid red;
+    }
+
+    .publicacionSinImagen,
+    .publicacionConImagen{
+        width: 100%;
     }
 }
 
