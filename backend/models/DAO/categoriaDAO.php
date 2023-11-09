@@ -10,7 +10,7 @@ function agregarCategoria($categoria){
     if ($respuesta){
         return new Respuesta(true, "Categoria agregada exitosamente", $respuesta);
     }else{
-        return new Respuesta(true, "", $respuesta);
+        return new Respuesta(false, "Esta categoria ya existe", $respuesta);
     }
 }
 
@@ -27,7 +27,7 @@ function obtenerCategoria(){
     $respuesta = $connection->query($sql);
     $categorias = $respuesta->fetch_all(MYSQLI_ASSOC);
     if($respuesta){
-        return new Respuesta(true, null, $categorias);
+        return $categorias;
     }
 }
 }

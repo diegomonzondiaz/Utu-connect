@@ -16,7 +16,7 @@ function agregarArchivo($archivo) {
         $nuevoNombre = "$id.$extension";
         $nuevaRespuesta = move_uploaded_file($rutaTemporal, __DIR__."/../../../assets/$nuevoNombre");
         if($nuevaRespuesta){
-            return new Respuesta(true, null, $nuevoNombre);
+        return $nuevoNombre;
         }
     }
 }
@@ -24,19 +24,19 @@ function modificarArchivo($archivo) {
     $connection = connection();
     $sql = `UPDATE INTO archivo set ('nombre') VALUES('$archivo')`;
     $respuesta = $connection->query($sql);
-    return new Respuesta(true, "", $respuesta);
+    return $respuesta;
 }
 function eliminarArchivo($archivo) {
     $connection = connection();
     $sql = `DELETE * FROM archivo WHERE id= $archivo->id`;
     $respuesta = $connection->query($sql);
-    return new Respuesta(true, "", $respuesta);
+    return $respuesta;
 }
 function obtenerArchivo($archivo) {
     $connection = connection();
     $sql = `SELECT * FROM publicacion`;
     $respuesta = $connection->query($sql);
-    return new Respuesta(true, "", $respuesta);
+    return $respuesta;
 }
 }
 ?>
