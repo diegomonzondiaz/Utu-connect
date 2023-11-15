@@ -22,12 +22,12 @@
     font-family: 'Rubik', sans-serif;
 }
 
-a,
-a:visited{
-    color: #454545;;
+a,a:visited{
+    color: #454545;
     text-decoration: none;
-    display: none;
 }
+
+
 
 body{
     width: 100vw; 
@@ -123,6 +123,10 @@ main{
     overflow: hidden;
 }
 
+.publicacion a{
+    display: block !important;
+}
+
 .cabecera_publi{
     display: flex;
     justify-content: center;
@@ -149,11 +153,6 @@ main{
     overflow: hidden;
     border: 1px solid var(--color_page);
     background-color: #fff;
-}
-
-.img_container::-webkit-scrollbar,
-.contenedor_publicaciones::-webkit-scrollbar{
-    display: none;
 }
 
 .img_container img{

@@ -43,7 +43,6 @@ async function eliminar(categoria){
 async function agregar(formulario){
     let url = window.location.origin+'/UTU-connect/backend/controllers/categoria.php?consulta=agregar';
     let categoriaDato = new FormData(formulario);
-    console.log(categoriaDato);
     let configuracion = {
         method: "POST",
         body:categoriaDato

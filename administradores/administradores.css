@@ -97,6 +97,8 @@ main{
     border: none;
 }
 
+#iframe::-webkit-scrollbar{display: none;}
+
 footer{
     width: 100%;
     height: 10%;

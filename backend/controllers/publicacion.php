@@ -1,4 +1,7 @@
 <?php 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once __DIR__ . '/../models/publicacion.php';
 require_once __DIR__ . '/../models/DAO/publicacionDAO.php';
 require_once __DIR__ . '/../models/DAO/imagenDAO.php';
@@ -31,16 +34,32 @@ function agregarPublicacion(){
     $contenido_img = $_FILES['contenido_img'];
     $contenido_texto = $_POST['contenido_texto'];
     $contenido_archivo = $_FILES['contenido_archivo'];
-    if($contenido_img){
-        $imagen = (new imagenDAO())->agregarImagen($contenido_img);
+    $idImagen = "NULL";
+    $idArchivo = "NULL";
+    if(file_exists($contenido_img['tmp_name'])){
+        $respuesta = (new imagenDAO())->agregarImagen($contenido_img);
+        if($respuesta->success){
+            $idImagen = $respuesta->data;
+        }else{
+            echo json_encode($respuesta);
+            exit();
+        }
+
     }
-    if($contenido_archivo){
-        $archivo = (new archivoDAO())->agregarArchivo($contenido_archivo);
+    if(file_exists($contenido_archivo['tmp_name'])){
+        $respuesta = (new ArchivoDAO())->agregarArchivo($contenido_archivo);
+        if($respuesta->success){
+            $idArchivo = $respuesta->data;
+        }else{
+            echo json_encode($respuesta);
+            exit();
+        }
     }
-    $publicacion = new publicacion(null, $titulo, $categoria, $tipo, $archivo, $imagen, $contenido_texto);
+    $publicacion = new Publicacion("NULL", $titulo, $categoria, $tipo, $contenido_texto, $idImagen, $idArchivo);
     $resultado = (new publicacionDAO())->agregarPublicacion($publicacion);
-    return $resultado;
+    echo json_encode($resultado);
 }
+
 function modificarPublicacion(){
     $id = $_POST['id'];
     $titulo = $_POST['titulo'];
@@ -53,15 +72,18 @@ function modificarPublicacion(){
     $resultado = (new publicacionDAO())->modificarPublicacion($publicacion);
     return $resultado;
 }
+
 function eliminarPublicacion(){
-    $id = $_POST['id'];
+    $id = $_GET['id'];
     $resultado = (new publicacionDAO())->eliminarPublicacion($id);
-    return $resultado;
+    echo json_encode($resultado);
 }
+
 function obtenerPublicacionesAdmin(){
     $publicaciones = (new publicacionDAO())->obtenerPublicacionesAdmin();
-    echo $publicaciones;
+    echo json_encode($publicaciones);
 }
+
 function obtenerPublicacionesRol(){
     $respuesta = (new sesionDAO())->obtenerSesion();
     if($respuesta->success){

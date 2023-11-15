@@ -78,15 +78,30 @@ function mostrarPublicaiciones(publicaciones) {
    let contenedor = document.querySelector('.contenedor_publicaciones');
    contenedor.innerHTML = '';
    publicaciones.forEach(publicacion => {
+    let imagen = '';
+    let documento = "";
+    if (publicacion.id_imagen != null) {
+        imagen = `<div class="img_container"><img src="Storage/img/${publicacion.id_imagen}.${publicacion.tipo_imagen}"></div>`;
+    }
+
+    if(publicacion.id_archivo != null){
+        documento = `
+        <div class = "documento">
+            <a href="Storage/archivos/${publicacion.id_archivo}.${publicacion.tipo_archivo}" download="${publicacion.nombre_archivo}">Descargar: ${publicacion.nombre_archivo}</a>
+        </div>`;
+        console.log(documento);
+    }
     contenedor.innerHTML += `
         <div class="${publicacion.contenido_img != '' ? "publicacionConImagen" : "publicacionSinImagen"}">
             <div class="cabecera_publi"><h3 class="titulo_publicacion">${publicacion.titulo}</h3> <p>${publicacion.categoria}</p></div>
-            ${publicacion.contenido_img != "" ? '<div class="img_container"><img src='+publicacion.contenido_img+' alt=""></div>' : ''}
+            ${imagen}
+            
             <div class="contenido_publicacion">
                 <p>
                     ${publicacion.contenido_texto}    
                 </p>
             </div>
+            ${documento}
         </div>
     `
    }); 

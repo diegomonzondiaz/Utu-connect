@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>publicaciones</title>
     <link rel="stylesheet" href="css/publicaciones.css">
+    <script src="js/publicaciones.js"></script>
     <script src="https://kit.fontawesome.com/c1ea718351.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form action="" id="crearPublicaion">
+    <form id="crearPublicacion">
         <div class="grupo b-bottom">
             <h2>Crear Publicacion</h2>
         </div>
@@ -18,41 +19,39 @@
         </div>
         <div class="grupo">
             <div class="grupo_horizontal">
-                <label for="tipo_usuario">Destinatarios</label>
+                <label for="tipo_usuario">Destinatarios:</label>
                 <select name="tipo_usuario" id="tipo_usuario">
-                    <option value="alumno">Alumnos</option>
-                    <option value="docente">Docentes</option>
+                    <option name="categoria" value="Alumno">Alumnos</option>
+                    <option name="categoria" value="Docente">Docentes</option>
+                    <option name="categoria" value="General">General</option>
                 </select>
-                <label for="categorias">Categoria</label>
+                
+                <label for="categorias">Categoria:</label>
                 <select name="categorias" id="categorias">
-                    <option value="">Prueba</option>
-                    <option value="">Prueba</option>
-                    <option value="">Prueba</option>
                 </select>
             </div>
         </div>
         <h3 class="grupo" style="border-bottom: 1px dashed #000; border-top: 1px dashed #000;">Contenido</h3>
         <div class="grupo">
             <label for="texto">Texto</label>
-            <textarea name="texto" id="texto" cols="30" rows="10"></textarea>
+            <textarea name="texto" id="texto" name="contenido_texto" cols="30" rows="10"></textarea>
         </div>
         <hr class="grupo">
         <div class="grupo">
-            <h3>Extras</h3>
             <div class="grupo_horizontal">
                 <div>
                     <label class="label_hover" for="archivo">
                         Adjuntar Archivo
                         <i class="fa-solid fa-file"></i>
                     </label>
-                    <input class="ds-none" type="file" name="archivo" id="archivo">
+                    <input class="ds-none" type="file" name="contenido_archivo" id="archivo">
                 </div>
                 <div>
                     <label class="label_hover" for="img">
                         Adjuntar Imagen
                         <i class="fa-solid fa-image"></i>
                     </label>
-                    <input class="ds-none" type="file" name="img" id="img">
+                    <input name="contenido_img" class="ds-none" type="file" name="img" id="img">
                 </div>
             </div>
         </div>
@@ -60,5 +59,25 @@
             <input type="submit" value="Publicar">
         </div>
     </form>
+
+    <table>
+        <thead>
+          <tr>
+            <th colspan="8">Publicaciones</th>
+          </tr>
+          <tr>
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Destino</th>
+            <th>Contenido</th>
+            <th>Imagen</th>
+            <th>Archivo</th>
+            <th>Borrar</th>
+            <th>Editar</th>
+          </tr>
+        </thead>
+        <tbody id="tabla">
+        </tbody>
+      </table>
 </body>
 </html>

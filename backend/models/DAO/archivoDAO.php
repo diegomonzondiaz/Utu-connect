@@ -1,42 +1,25 @@
 <?php 
 require_once __DIR__ . '/database/database.php';
-class archivoDAO {
-
-
-
+class ArchivoDAO {
 function agregarArchivo($archivo) {
     $connection = connection();
-    $archivoName = $archivo['name'];
+    $archName = $archivo['name'];
     $rutaTemporal =$archivo['tmp_name'];
-    $extension = pathinfo($archivoName, PATHINFO_EXTENSION);
-    $sql = `INSERT INTO archivo ('nombre') VALUES($archivoName)`;
+    $nombreSinExtension = pathinfo($archName, PATHINFO_FILENAME);
+    $extension = pathinfo($archName, PATHINFO_EXTENSION);
+    $sql = "INSERT INTO documentos (tipo_archivo, nombre_archivo) VALUES('$extension', '$nombreSinExtension')";
     $respuesta = $connection->query($sql);
     if($respuesta){
         $id = $connection->insert_id;
         $nuevoNombre = "$id.$extension";
-        $nuevaRespuesta = move_uploaded_file($rutaTemporal, __DIR__."/../../../assets/$nuevoNombre");
-        if($nuevaRespuesta){
-        return $nuevoNombre;
-        }
+        move_uploaded_file($rutaTemporal, __DIR__."/../../../Storage/archivos/$nuevoNombre");
+        return new Respuesta(true, $sql, $id);
+         
+    }else{
+        return new Respuesta(false, $sql, $connection->error);
     }
+    
 }
-function modificarArchivo($archivo) {
-    $connection = connection();
-    $sql = `UPDATE INTO archivo set ('nombre') VALUES('$archivo')`;
-    $respuesta = $connection->query($sql);
-    return $respuesta;
-}
-function eliminarArchivo($archivo) {
-    $connection = connection();
-    $sql = `DELETE * FROM archivo WHERE id= $archivo->id`;
-    $respuesta = $connection->query($sql);
-    return $respuesta;
-}
-function obtenerArchivo($archivo) {
-    $connection = connection();
-    $sql = `SELECT * FROM publicacion`;
-    $respuesta = $connection->query($sql);
-    return $respuesta;
-}
+
 }
 ?>

@@ -14,25 +14,29 @@
 
 body{
     background-color: #fff;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     display: flex;
+    flex-direction: column;
+    gap: 1em;
+    overflow: scroll;
     justify-content: center;
     align-items: center;
 }
 
-#crearPublicaion{
+#crearPublicacion{
     position: relative;
     padding: .4em;
     display: flex;
     flex-direction: column;
     gap: 1em;
     position: relative;
-    height: min-content;
-    width: 35%;
+    height: max-content;
+    width: 45%;
     border: 1px solid var(--color_page);
     border-radius: 5px;
-    box-shadow: 1px 4px 43px 0px var(--color_sombra);
+    margin-top: 2em;
+    box-shadow: 1px 2px 15px 0px var(--color_sombra);
 }
 
 .grupo{
@@ -47,7 +51,7 @@ body{
 }
 
 #titulo{
-    display: none;
+    display: block;
 }
 
 .grupo > textarea{
@@ -98,6 +102,35 @@ input[type="submit"]:hover{
 
 .label_hover:hover{
     text-decoration: underline;
+}
+
+table {
+    width: 89%;
+    border-collapse: collapse;
+    border: 2px solid var(--color_sombra);
+  }
+
+  th, td {
+    border: 1px solid var(--color_sombra);
+    padding: 8px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #717171;
+    color: #fff;
+  }
+
+a,
+a:visited{
+    color: #717171;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+a:hover{
+  text-decoration: underline;
+  color: #3e3e3e;
 }
 
 @media screen and (max-width: 650px){
