@@ -3,7 +3,11 @@ window.onload = function() {
     obtenerCategorias();
     let frm = document.querySelector('#crearPublicacion').onsubmit = function() {
         event.preventDefault();
-        crearPublicacion(event.target);
+        if(event.target.tipoEnvio.value == "Publicar"){
+            crearPublicacion(event.target);
+        }else{
+            editarPublicacion(event.target);
+        }
     };
 };
 
@@ -18,6 +22,7 @@ async function crearPublicacion(formulario) {
     let datos = await respuesta.json();
     if(datos.success){
         alert(datos.mensaje);
+        formulario.reset();
         obtener();
     }else{
         alert(datos.mensaje);
@@ -46,8 +51,9 @@ function listar(publicaciones){
                 <a href="Storage/archivos/${publicacion.id_archivo}.${publicacion.tipo_archivo}" download="${publicacion.nombre_archivo}">${publicacion.nombre_archivo}</a>
             `;
         }
-        tabla.innerHTML += `
-        <tr>
+        let tr  = document.createElement('tr');
+        tr.innerHTML += `
+        
            <td>${publicacion.id}</td>
            <td>${publicacion.titulo}</td>
            <td>${publicacion.rol_destino}</td>
@@ -55,9 +61,15 @@ function listar(publicaciones){
            <td>${imagen}</td>
            <td>${documento}</td>
            <td><button onclick="eliminar(${publicacion.id})"><i class="fa-solid fa-trash"></i> Eliminar</button></td>
-           <td><button><i class="fa-solid fa-pencil"></i> Editar</button></td>
-        </tr>
         `;
+        tabla.appendChild(tr);
+        let td = document.createElement('td');
+        let button = document.createElement('button');
+        td.appendChild(button);
+        button.innerHTML=`<i class="fa-solid fa-pencil"></i> Editar`;
+        button.onclick=()=>{editar(publicacion);};
+        tr.appendChild(td);
+
     });
 }
 
@@ -89,4 +101,36 @@ function cargarCategorias(categorias) {
             <option value="${categoria.nombre}">${categoria.nombre}</option>
         `;
     });
+}
+
+function editar(publicacion){
+    let frm = document.querySelector('#crearPublicacion');
+    let titulo_frm = document.querySelector('#titulo_frm').innerText = "Editar Publicación";
+    frm.id_publicacion.value=publicacion.id;
+    frm.titulo.value=publicacion.titulo;
+    frm.tipo.value=publicacion.rol_destino;
+    frm.categoria.value=publicacion.categoria;
+    frm.contenido_texto.value=publicacion.contenido_texto;
+    frm.tipoEnvio.value="Editar";
+
+}
+
+async function editarPublicacion(formulario){
+    let formdata = new FormData(formulario);
+    let url = window.location.origin + "/UTU-connect/backend/controllers/publicacion.php?consulta=modificar";
+    let config = {
+        method: 'POST',
+        body: formdata
+    }
+    let respuesta = await fetch(url, config);
+    let datos = await respuesta.json();
+    if(datos.success){
+        alert(datos.mensaje);
+        formulario.reset();
+        let titulo_frm = document.querySelector('#titulo_frm').innerText = "Crear Publicación";
+        let button = document.querySelector('#button').value = "Publicar";
+        obtener();
+    }else{
+        alert(datos.mensaje);
+    }
 }

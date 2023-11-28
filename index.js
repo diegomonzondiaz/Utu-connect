@@ -7,8 +7,14 @@ window.onload = function() {
     let btnMenu = document.querySelector('#btn_menu').onclick = function() {
         abrirMenu(contenedor);
     }
+    let selectElement = document.getElementById("categorias");
+    selectElement.addEventListener("change", function() {
+        let valorSeleccionado = selectElement.value;
+        filtrar(`${valorSeleccionado}`);
+    });
     obtenerSesion();
     obtenerPublicaciones();
+    obtenerCategorias();
 }
 
 function abrirMenu(contenedor){
@@ -22,7 +28,7 @@ function cerrarMenu(contenedor){
 }
 
 var obtenerSesion = async ()=>{
-    let url = window.location.origin+'/UTUConnect/backend/index.php?objetivo=sesion&request=obtenerSesion';
+    let url = window.location.origin+'/UTU-connect/backend/index.php?objetivo=sesion&consulta=obtenerSesion';
     let respuesta = await fetch(url);
     let respuestaDatos = await respuesta.json();
     console.log(respuestaDatos);
@@ -57,10 +63,9 @@ async function obtenerPublicaciones(){
     let datos = await respuesta.json();
     console.log(datos.data);
     if(datos.success){
-        console.log(datos.data);
         mostrarPublicaiciones(datos.data);
     }else{
-       
+       alert(datos.mesnaje);
     }
 }
 
@@ -89,7 +94,6 @@ function mostrarPublicaiciones(publicaciones) {
         <div class = "documento">
             <a href="Storage/archivos/${publicacion.id_archivo}.${publicacion.tipo_archivo}" download="${publicacion.nombre_archivo}">Descargar: ${publicacion.nombre_archivo}</a>
         </div>`;
-        console.log(documento);
     }
     contenedor.innerHTML += `
         <div class="${publicacion.contenido_img != '' ? "publicacionConImagen" : "publicacionSinImagen"}">
@@ -107,3 +111,37 @@ function mostrarPublicaiciones(publicaciones) {
    }); 
 }
 
+async function filtrar(categoria){
+    let url = window.location.origin+`/UTU-connect/backend/controllers/publicacion.php?consulta=obtenerCat&categoria=${categoria}`;
+    let respuesta = await fetch(url);
+    let datos = await respuesta.json();
+    console.log(datos);
+    if(categoria != "Todas"){
+        if(datos.data.length > 0){
+            mostrarPublicaiciones(datos.data);
+        }else{
+            alert("No hay publicaiciones de esta categoría");
+        }
+    }else{
+        obtenerPublicaciones();
+    }
+}
+
+async function obtenerCategorias(){
+    let url = window.location.origin+"/UTU-connect/backend/controllers/categoria.php?consulta=obtener";
+    let categorias = await fetch(url);
+    let categoriasDatos = await categorias.json();
+    listar(categoriasDatos);
+}
+
+function listar(categorias){
+    let select = document.querySelector('#categorias');
+    select.innerHTML = "";
+    select.innerHTML += '<option value="Todas">Todas</option>';
+
+    categorias.forEach(categoria =>{
+        select.innerHTML += `
+            <option value="${categoria.nombre}">${categoria.nombre}</option>
+        `;   
+    });
+}

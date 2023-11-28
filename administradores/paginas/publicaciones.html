@@ -10,31 +10,40 @@
 </head>
 <body>
     <form id="crearPublicacion">
+        
         <div class="grupo b-bottom">
-            <h2>Crear Publicacion</h2>
+            <h2 id="titulo_frm">Crear Publicación</h2>
         </div>
         <div class="grupo">
-            <label for="titulo">Titulo</label>
-            <input type="text" name="titulo" id="titulo">
+            <div class="grupo_horizontal">
+                <label for="id_publicacion">ID:</label>
+                <input type="text" name="id_publicacion" readonly>
+            </div>
+        </div>
+        <div class="grupo">
+            <div class="grupo_horizontal">
+                <label for="titulo">Titulo: </label>
+                <input type="text" name="titulo" id="titulo">
+            </div>
         </div>
         <div class="grupo">
             <div class="grupo_horizontal">
                 <label for="tipo_usuario">Destinatarios:</label>
-                <select name="tipo_usuario" id="tipo_usuario">
-                    <option name="categoria" value="Alumno">Alumnos</option>
-                    <option name="categoria" value="Docente">Docentes</option>
-                    <option name="categoria" value="General">General</option>
+                <select name="tipo" id="tipo_usuario">
+                    <option value="Alumno">Alumnos</option>
+                    <option value="Docente">Docentes</option>
+                    <option value="General">General</option>
                 </select>
                 
                 <label for="categorias">Categoria:</label>
-                <select name="categorias" id="categorias">
+                <select name="categoria" id="categorias">
                 </select>
             </div>
         </div>
         <h3 class="grupo" style="border-bottom: 1px dashed #000; border-top: 1px dashed #000;">Contenido</h3>
         <div class="grupo">
             <label for="texto">Texto</label>
-            <textarea name="texto" id="texto" name="contenido_texto" cols="30" rows="10"></textarea>
+            <textarea id="texto" name="contenido_texto" cols="30" rows="10"></textarea>
         </div>
         <hr class="grupo">
         <div class="grupo">
@@ -56,7 +65,7 @@
             </div>
         </div>
         <div class="grupo">
-            <input type="submit" value="Publicar">
+            <input type="submit" id="button" name="tipoEnvio" value="Publicar">
         </div>
     </form>
 

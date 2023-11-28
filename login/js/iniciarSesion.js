@@ -1,5 +1,3 @@
-import redirigir from "./redireccionamiento.js";
-
 window.onload = function() {
     document.querySelector("#formulario").onsubmit = function() {
         event.preventDefault();
@@ -18,12 +16,11 @@ var iniciarSesion = async (formulario)=>{
     }
     let respuesta = await fetch(url, config);
     let respuestaDatos = await respuesta.json();
-    console.log(respuestaDatos);
     if(respuestaDatos.success){
         if(formulario.tipo.value == 'Admin'){
-            redirigir('admin')
+            window.parent.location.href = "../../administradores/adminPage.html";
         }else{
-            redirigir('publicaciones');
+            window.parent.location.href = "../../index.html";
         }
     }else{
         console.log(respuestaDatos.mensaje);
@@ -38,9 +35,9 @@ var obtenerUsuario = async ()=>{
     console.log(respuestaDatos);
     if (respuestaDatos.success){
         if(respuestaDatos.data.tipo == 'admin'){
-            redirigir('admin');
+            window.location.href = "../../administradores/adminPage.html";
         }else{
-            redirigir('publicaciones');
+            window.location.href = "../../index.html";
         }
     }
     

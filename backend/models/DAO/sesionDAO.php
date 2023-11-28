@@ -39,7 +39,7 @@ class SesionDAO {
     }
     
     public function obtenerSesion(){
-        if($_SESSION['sesion'] != null){
+        if(isset($_SESSION['sesion']) && $_SESSION['sesion'] != null){
             return new Respuesta(true,"sesion encontrada",$_SESSION['sesion']);
         }else{
             return new Respuesta(false,"no se encontro sesion",null);

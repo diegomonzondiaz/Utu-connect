@@ -1,5 +1,3 @@
-import redirigir from "./redireccionamiento.js";
-
 window.onload = () => {
     let fromluario = document.querySelector('#formulario_registro').onsubmit = () => {
         event.preventDefault();
@@ -18,10 +16,9 @@ var registrar = async (formulario)=>{
     }
     let respuesta = await fetch(url, config);
     let respuestaDatos = await respuesta.json();
-    console.log(respuestaDatos);
     if(respuestaDatos.success){
         alert(respuestaDatos.mensaje)
-        redirigir('iniciarSesion');
+        window.location.href = "../../login/login.html";
     }else{
         console.log(respuestaDatos.mensaje);
         alert(respuestaDatos.mensaje);

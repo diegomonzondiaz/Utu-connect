@@ -25,6 +25,9 @@ switch ($tipoConsulta) {
     case "obtenerAdmin":
         obtenerPublicacionesAdmin();
         break;
+    case "obtenerCat":
+        obtenerPublicacionesCategoria();
+        break;
 }
 
 function agregarPublicacion(){
@@ -61,16 +64,37 @@ function agregarPublicacion(){
 }
 
 function modificarPublicacion(){
-    $id = $_POST['id'];
+    $id = $_POST['id_publicacion'];
     $titulo = $_POST['titulo'];
     $categoria = $_POST['categoria'];
     $tipo = $_POST['tipo'];
-    $contenido_img = $_POST['contenido_img'];
+    $contenido_img = $_FILES['contenido_img'];
     $contenido_texto = $_POST['contenido_texto'];
-    $contenido_archivo = $_POST['contenido_archivo'];
-    $publicacion = new publicacion($id, $titulo, $categoria, $tipo, $contenido_archivo, $contenido_img, $contenido_texto);
+    $contenido_archivo = $_FILES['contenido_archivo'];
+    $idImagen = "NULL";
+    $idArchivo = "NULL";
+    if(file_exists($contenido_img['tmp_name'])){
+        $respuesta = (new imagenDAO())->agregarImagen($contenido_img);
+        if($respuesta->success){
+            $idImagen = $respuesta->data;
+        }else{
+            echo json_encode($respuesta);
+            exit();
+        }
+
+    }
+    if(file_exists($contenido_archivo['tmp_name'])){
+        $respuesta = (new ArchivoDAO())->agregarArchivo($contenido_archivo);
+        if($respuesta->success){
+            $idArchivo = $respuesta->data;
+        }else{
+            echo json_encode($respuesta);
+            exit();
+        }
+    }
+    $publicacion = new Publicacion($id, $titulo, $categoria, $tipo, $contenido_texto, $idImagen, $idArchivo);
     $resultado = (new publicacionDAO())->modificarPublicacion($publicacion);
-    return $resultado;
+    echo json_encode($resultado);
 }
 
 function eliminarPublicacion(){
@@ -95,4 +119,17 @@ function obtenerPublicacionesRol(){
     }
     
 }
+
+function obtenerPublicacionesCategoria(){
+    $respuesta = (new sesionDAO())->obtenerSesion();
+    $categoria = $_GET['categoria'];
+    if($respuesta->success){
+        $publicaciones = (new publicacionDAO())->obtenerPublicacionesCategoria($categoria, $respuesta->data["tipo"]);
+        echo json_encode($publicaciones);
+    }else{
+        $publicaciones = (new publicacionDAO())->obtenerPublicacionesCategoria($categoria, "General");
+        echo json_encode($publicaciones);
+    }
+} 
+
 ?>

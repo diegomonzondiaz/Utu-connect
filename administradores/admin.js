@@ -1,5 +1,3 @@
-import redirigir from "../login/js/redireccionamiento.js";
-
 window.onload = function() {
     obtenerUsuario();
     document.querySelector('#cerrarSesion').onclick = function() {
@@ -11,28 +9,29 @@ window.onload = function() {
 }
 
 var obtenerUsuario = async ()=>{
-    let url = window.location.origin+'/UTUConnect/backend/index.php?objetivo=sesion&request=obtenerSesion';
+    let url = window.location.origin+'/UTU-connect/backend/index.php?objetivo=sesion&consulta=obtenerSesion';
     let respuesta = await fetch(url);
     let respuestaDatos = await respuesta.json();
-    let bienvenida = document.querySelector('#bienvenida');
-    bienvenida.innerText = `Bienvenido/a ${respuestaDatos.data.name}`; 
+    let bienvenida = document.querySelector('#bienvenida'); 
     if (respuestaDatos.success){
         if (respuestaDatos.data.tipo!='Admin'){
-           redirigir('iniciarSesion');
+           window.location.href = "../index.html";
+        }else{
+            bienvenida.innerText = `Bienvenido/a ${respuestaDatos.data.name}`;
         }
     }else{
-        redirigir('iniciarSesion');
+        window.location.href = "../login/login.html";
     }
  
     
 }
 
 async function cerrarSesion(){
-    let url = window.location.origin+'/UTUConnect/backend/index.php?objetivo=sesion&request=cerrarSesion';
+    let url = window.location.origin+'/UTU-connect/backend/index.php?objetivo=sesion&consulta=cerrarSesion';
     let respuesta = await fetch(url);
     let datos = await respuesta.json();
     if (datos.success){
-       redirigir('iniciarSesion');
+       window.location.href = "../login/login.html";
     };
 }
 

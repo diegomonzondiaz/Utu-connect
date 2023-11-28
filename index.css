@@ -27,7 +27,7 @@ a,a:visited{
     text-decoration: none;
 }
 
-
+/* .Inscripciones{display: none !important;} */
 
 body{
     width: 100vw; 
@@ -95,6 +95,16 @@ main{
     background-color: #ffff;
 }
 
+.grupo_filtro{
+    position: absolute;
+    display: flex;
+    width: max-content;
+    gap: 1em;
+    right: 0;
+    margin-right: 2em;
+    margin-top: 1em;
+}
+
 .contenedor_publicaciones{
     position: relative;
     padding: 1em;
@@ -112,6 +122,7 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     gap: 1em;
     width: 60%;
     height: 70%;
@@ -123,8 +134,12 @@ main{
     overflow: hidden;
 }
 
-.publicacion a{
-    display: block !important;
+.contenido_publicacion{
+    text-align: center;
+}
+
+a:hover{
+    text-decoration: underline;
 }
 
 .cabecera_publi{
@@ -182,18 +197,6 @@ main{
 #sesiarInicion:hover,
 #inicionSesiada:hover{text-decoration: underline;}
 
-footer{
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 10%;
-    background-color: #dedede;
-}
-
 .menu-oculto .blur{display: none}
 .menu-oculto .nav-mobile{
     left: -1000000px;
@@ -243,6 +246,13 @@ footer{
 
     .blur{
         display: none;
+    }
+
+    .grupo_filtro{
+        position: relative;
+        flex-direction: column;
+        text-align: center;
+        gap: .3em;
     }
 
     .nav-mobile{
